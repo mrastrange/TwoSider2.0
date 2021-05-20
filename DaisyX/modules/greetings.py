@@ -580,7 +580,7 @@ async def reset_security_note(message, chat, strings):
 @get_strings_dec("greetings")
 async def welcome_security_handler(message: Message, strings):
     if len(message.new_chat_members) > 1:
-        # FIXME: Daisy doesnt support adding multiple users currently
+        # FIXME: TwoSider V2.0 doesnt support adding multiple users currently
         return
 
     new_user = message.new_chat_members[0]
