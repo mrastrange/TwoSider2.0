@@ -43,7 +43,7 @@ async def is_register_admin(chat, user):
 async def _(event):
     if event.fwd_from:
         return
-    """this method of approve system is made by @AyushChatterjee, god will curse your family if you kang it motherfucker"""
+    """this method of approve system is made by @AyushChatterjee, god will curse your you if you kang it"""
     if event.is_group:
         if await is_register_admin(event.input_chat, event.message.sender_id):
             pass
