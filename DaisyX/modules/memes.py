@@ -341,7 +341,7 @@ async def carbon_api(e):
         e.chat_id,
         file,
         caption="Made using [Carbon](https://carbon.now.sh/about/),\
-        \nby @twosider_bot",
+        \nProcessed by @twosider_bot",
         force_document=True,
     )
     os.remove("./carbon.png")
