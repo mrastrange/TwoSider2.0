@@ -41,7 +41,7 @@ PP_ERROR = "**Failure while processing image**"
 NO_ADMIN = "**I am not an admin**"
 NO_PERM = "**I don't have sufficient permissions!**"
 
-CHAT_PP_CHANGED = "**Chat Picture Changed Successfully..**"
+CHAT_PP_CHANGED = "**Chat Picture Changed Successfully!**"
 CHAT_PP_ERROR = (
     "**Some issue with updating the pic,**"
     "**maybe you aren't an admin,**"
