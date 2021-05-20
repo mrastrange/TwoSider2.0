@@ -91,18 +91,18 @@ async def buttons_help(message):
     await message.reply(
         """
 <b>Variables:</b>
-Variables are special words which will be replaced by actual info
+Variables are special words which will be replaced by actual info.
 
 <b>Avaible variables:</b>
-<code>{first}</code>: User's first name
-<code>{last}</code>: User's last name
-<code>{fullname}</code>: User's full name
-<code>{id}</code>: User's ID
-<code>{mention}</code>: Mention the user using first name
-<code>{username}</code>: Get the username, if user don't have username will be returned mention
-<code>{chatid}</code>: Chat's ID
-<code>{chatname}</code>: Chat name
-<code>{chatnick}</code>: Chat username
+<code>{first}</code>: User's first name.
+<code>{last}</code>: User's last name.
+<code>{fullname}</code>: User's full name.
+<code>{id}</code>: User's ID.
+<code>{mention}</code>: Mention the user using first name.
+<code>{username}</code>: Get the username, if user don't have username will be returned mention.
+<code>{chatid}</code>: Chat's ID.
+<code>{chatname}</code>: Chat name.
+<code>{chatnick}</code>: Chat username.
     """
     )
 
