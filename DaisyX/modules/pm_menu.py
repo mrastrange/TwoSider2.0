@@ -1,4 +1,4 @@
-# Copyright (C) 2018 - 2020 MrYacha. All rights reserved. Source code available under the AGPL.
+By# Copyright (C) 2018 - 2020 MrYacha. All rights reserved. Source code available under the AGPL.
 # Copyright (C) 2021 TeamDaisyX
 # Copyright (C) 2020 Inuka Asith
 
@@ -45,16 +45,16 @@ def help_markup(modules):
 
 
 STICKERS = (
-    "CAACAgUAAxkBAAJOGmBeli95P073FKVkgc4esfKE4UlXAAIOAgACyavAVkbLMIidWYdyHgQ",
-    "CAACAgUAAxkBAAJOG2BeljABwlCfwzHT1gzyiciBri6_AAIsAgACXBPBVgpGQRz-1qmlHgQ",
-    "CAACAgUAAxkBAAJOHGBeljOJ35CQNnkpnVcgRoHuJX6DAAL3AQACN8TBVm1PIART01cWHgQ",
-    "CAACAgUAAxkBAAJOHWBeljXW9QzYQ51gpCjHZHCF5Ui6AAJ7AgAC3zDBVo2xenp7JYhAHgQ",
-    "CAACAgUAAxkBAAJOHmBeljjU0_FT_QpdUUJBqVUC0nfJAAKYAgACJ_jBVvntHY_8WF27HgQ",
-    "CAACAgUAAxkBAAJOH2BeljrV68mPLu8_6n4edT20Q3IQAAJ9AgACq3LBVmLuZuNPlvkfHgQ",
-    "CAACAgUAAxkBAAJOIGBeljttuniUPykRtzkSZj3SRwKJAAI7AgACNm_BVp8TCkE6ZqCoHgQ",
-    "CAACAgUAAxkBAAJOIWBelj-P_2vtVqtkF2OMlVN3M0N4AAK3AQACSm3BVkXF2voraS2tHgQ",
-    "CAACAgUAAxkBAAJOImBelkJxUBm2rL1iPfMZfk-_9DaOAALrAgAC4T3BVniopXQVsZ4KHgQ",
-    "CAACAgUAAxkBAAJOI2BelkMO0AX_wtAc7hUZz1NixuMlAAKEAwACY4TAViVuNLTBmmkgHgQ",
+    "CAADAQADTQEAAok2uURJJ1IgpIBkIAI",
+    "CAADAQADmgEAAuSGsEQmFZ8jxYYs2gI",
+    "CAADAQADeAEAAl_CuERqAAHr0AveIJwC",
+    "CAADAQADsgEAAmUdsUTFaRlV_Z7IIgI",
+    "CAADAQADYgEAArCBuEQ8nlIliAABbn0C",
+    "CAADAQADUAEAAoU6uESjB0lnIC0CTwI",
+    "CAADAQADpQEAAmQjsEQahwWtyNqMcAI",
+    "CAADAQADjQEAAhlVsUQkIq1RkUrZqQI",
+    "CAADAQADvAEAAtB6sUSmpszs0EEm7AI",
+    "CAADAQADFwEAAkCBsURIej6ksO5tpQI",
 )
 
 
