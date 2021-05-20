@@ -78,7 +78,7 @@ async def select_lang_keyboard(message, strings, edit=False):
 
     markup.add(
         InlineKeyboardButton(
-            strings["crowdin_btn"], url="https://t.me/Daisysupport_official"
+            strings["crowdin_btn"], url="https://t.me/two_sider_support"
         )
     )
     if edit:
@@ -167,7 +167,7 @@ async def __import__(chat_id, data):
 __mod_name__ = "Languages"
 
 __help__ = """
-This module is dedicated towards utlising Daisy's localization feature! You can also <a href='https://crowdin.com/project/DaisyXx'>contribute</a> for improving localization in Daisy!
+This module is dedicated towards utlising TWOSIDER V2.0's localization feature! 
 
 <b>Available commands:</b>
 - /lang: Shows a list of avaible languages
