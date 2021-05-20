@@ -199,7 +199,7 @@ async def on_snip_save(event):
         )
 
         await event.reply(
-            f"Classic Filter {name} saved successfully. you can get it with {name}\nNote: Try our new filter system /addfilter "
+            f"Classic Filter {name} saved successfully. You can get it with {name}\nNote: Try our new filter system /addfilter "
         )
 
     else:
