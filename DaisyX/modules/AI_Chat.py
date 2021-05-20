@@ -77,7 +77,7 @@ async def hmm(client, message):
     required_file_name = message.download()
     if IBM_WATSON_CRED_URL is None or IBM_WATSON_CRED_PASSWORD is None:
         await message.reply(
-            "You need to set the required ENV variables for this module. \nModule stopping"
+            "Did not setup AI ENV var, Contact Support"
         )
     else:
         headers = {
@@ -104,7 +104,7 @@ async def hmm(_, message):
     global daisy_chats
     if len(message.command) != 2:
         await message.reply_text(
-            "I only recognize `/chatbot on` and /chatbot `off only`"
+            "I can recognize `/chatbot on` and /chatbot `off only`"
         )
         message.continue_propagation()
     status = message.text.split(None, 1)[1]
@@ -113,20 +113,20 @@ async def hmm(_, message):
         lel = await edit_or_reply(message, "`Processing...`")
         lol = add_chat(int(message.chat.id))
         if not lol:
-            await lel.edit("Daisy AI Already Activated In This Chat")
+            await lel.edit("Two Sider 2.0 Already Activated In This Chat")
             return
         await lel.edit(
-            f"Daisy AI Successfully Added For Users In The Chat {message.chat.id}"
+            f"Two Sider 2.0 Successfully Added For Users In The Chat {message.chat.id}"
         )
 
     elif status == "OFF" or status == "off" or status == "Off":
         lel = await edit_or_reply(message, "`Processing...`")
         Escobar = remove_chat(int(message.chat.id))
         if not Escobar:
-            await lel.edit("Daisy AI Was Not Activated In This Chat")
+            await lel.edit("Two Sider 2.0 Was Not Activated In This Chat")
             return
         await lel.edit(
-            f"Daisy AI Successfully Deactivated For Users In The Chat {message.chat.id}"
+            f"Two Sider 2.0 Successfully Deactivated For Users In The Chat {message.chat.id}"
         )
 
     elif status == "EN" or status == "en" or status == "english":
@@ -138,7 +138,7 @@ async def hmm(_, message):
         message.continue_propagation()
     else:
         await message.reply_text(
-            "I only recognize `/chatbot on` and /chatbot `off only`"
+            "I can recognize `/chatbot on` and /chatbot `off only`"
         )
 
 
@@ -311,7 +311,7 @@ async def inuka(client, message):
 
 
 @daisyx.on_message(
-    filters.regex("Daisy|daisy|DaisyX|daisyx|Daisyx")
+    filters.regex("Two Sider|Plutonium X|Alpha Elite")
     & ~filters.bot
     & ~filters.via_bot
     & ~filters.forwarded
@@ -385,14 +385,14 @@ async def inuka(client, message):
 
 __help__ = """
 <b> Chatbot </b>
-DAISY AI 3.0 IS THE ONLY AI SYSTEM WHICH CAN DETECT & REPLY UPTO 200 LANGUAGES
+TWO SIDER 2.0 IS THE ONLY AI SYSTEM WHICH CAN DETECT & REPLY UPTO 200 LANGUAGES
 
  - /chatbot [ON/OFF]: Enables and disables AI Chat mode (EXCLUSIVE)
  - /chatbot EN : Enables English only chatbot
  
  
 <b> Assistant </b>
- - /ask [question]: Ask question from daisy
+ - /ask [question]: Ask question from two sider 2.0
  - /ask [reply to voice note]: Get voice reply
  
 """
