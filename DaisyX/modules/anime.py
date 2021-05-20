@@ -69,7 +69,7 @@ async def anime_airing(message):
 async def anime_search(message):
     search = message.text.split(" ", 1)
     if len(search) == 1:
-        await message.reply("Provide anime name!")
+        await message.reply("Provide an anime name!")
         return
     else:
         search = search[1]
@@ -229,7 +229,7 @@ async def site_search(message, site: str):
     try:
         search_query = args[1]
     except IndexError:
-        await message.reply("Give something to search")
+        await message.reply("Give something to search.")
         return
 
     if site == "kaizoku":
