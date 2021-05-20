@@ -140,7 +140,7 @@ def _check_member(client, message):
                         )
                     except ChatAdminRequired:
                         sent_message.edit(
-                            "❗ **TwoSider 2.0 is not admin here..**\n__Give me ban permissions and retry.. \n#Ending FSub...__"
+                            "❗ **TwoSider V2.0 is not admin here..**\n__Give me ban permissions and retry.. \n#Ending FSub...__"
                         )
                     except RPCError:
                         return
