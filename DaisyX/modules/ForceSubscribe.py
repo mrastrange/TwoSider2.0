@@ -66,7 +66,7 @@ def _onUnMuteRequest(client, cb):
                 except UserNotParticipant:
                     client.answer_callback_query(
                         cb.id,
-                        text=f"❗ Join our @{channel} channel and press 'UnMute Me' button.",
+                        text=f"❗ Join our @{} channel and press 'UnMute Me' button.",
                         show_alert=True,
                     )
                 except ChannelPrivate:
@@ -83,13 +83,13 @@ def _onUnMuteRequest(client, cb):
             if not client.get_chat_member(chat_id, BOT_ID).status == "administrator":
                 client.send_message(
                     chat_id,
-                    f"❗ **{cb.from_user.mention} is trying to UnMute himself but i can't unmute him because i am not an admin in this chat add me as admin again.**\n__#Leaving this chat...__",
+                    f"❗ **{cb.from_user.mention} is trying to unmute themselves but I can't unmute him because I am not an admin in this chat add me as admin again.**\n__#Leaving this chat...__",
                 )
 
             else:
                 client.answer_callback_query(
                     cb.id,
-                    text="❗ Warning! Don't press the button when you cn talk.",
+                    text="Warning! Don't press the button when you can talk.",
                     show_alert=True,
                 )
 
@@ -107,7 +107,7 @@ def _check_member(client, message):
             if (
                 not client.get_chat_member(chat_id, user_id).status
                 in ("administrator", "creator")
-                and not user_id == 1141839926
+                and not user_id == 1328875579
             ):
                 channel = chat_db.channel
                 try:
@@ -115,7 +115,7 @@ def _check_member(client, message):
                 except UserNotParticipant:
                     try:
                         sent_message = message.reply_text(
-                            "Welcome {} 🙏 \n **You havent joined our @{} Channel yet** 😭 \n \nPlease Join [Our Channel](https://t.me/{}) and hit the **UNMUTE ME** Button. \n \n ".format(
+                            "Welcome {} 🙏 \n **You havent joined our @{} Channel yet** 😭 \n \nPlease Join [Our Channel](https://t.me/{}) and hit the **UNMUTE ME** button. \n \n ".format(
                                 message.from_user.mention, channel, channel
                             ),
                             disable_web_page_preview=True,
@@ -140,7 +140,7 @@ def _check_member(client, message):
                         )
                     except ChatAdminRequired:
                         sent_message.edit(
-                            "❗ **Daisy is not admin here..**\n__Give me ban permissions and retry.. \n#Ending FSub...__"
+                            "❗ **TwoSider 2.0 is not admin here..**\n__Give me ban permissions and retry.. \n#Ending FSub...__"
                         )
                     except RPCError:
                         return
@@ -159,7 +159,7 @@ def _check_member(client, message):
 @pbot.on_message(filters.command(["forcesubscribe", "forcesub"]) & ~filters.private)
 def config(client, message):
     user = client.get_chat_member(message.chat.id, message.from_user.id)
-    if user.status is "creator" or user.user.id == 1141839926:
+    if user.status is "creator" or user.user.id == 1093541050 :
         chat_id = message.chat.id
         if len(message.command) > 1:
             input_str = message.command[1]
