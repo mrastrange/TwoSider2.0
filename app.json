@@ -1,16 +1,15 @@
 {
-  "name": "DaisyX",
+  "name": "TwoSider2.0",
   "description": "?",
   "keywords": [
     "telegram",
-    "Daisy",
+    "TwoSider2,0",
     "plugin",
-    "telegram-DaisyX",
-    "fuck-TG"
+    "telegram-TwoSider2.0",
+    "Telegramlove"
   ],
-  "repository": "https://github.com/TeamDaisyX/Daisy-x",
-  "website": "daisyproject.studio",
-  "success_url": "t.me/DaisyXUpdates",
+  "repository": "https://github.com/mrastrange/TwoSider2.0/",
+  "success_url": "t.me/two_sider",
   "buildpacks": [
    {
      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
