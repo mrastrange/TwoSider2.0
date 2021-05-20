@@ -25,7 +25,7 @@ __HELP__ = """
 Classic filters are just like marie's filter system. If you still like that kind of filter system
 **Admin Only**
  - /cfilter <word> <message>: Every time someone says "word", the bot will reply with "message"
-You can also include buttons in filters, example send `/savefilter google` in reply to `Click Here To Open Google | [Button.url('TwoSider V2.0', 't.me/twosider_bot')]`
+You can also include buttons in filters, example send `/savefilter twosider` in reply to `Click here to open TwoSider V2.0 bot | [Button.url('TwoSider V2.0', 't.me/twosider_bot')]`
  - /stopcfilter <word>: Stops that filter.
  - /stopallcfilters: Delete all filters in the current chat.
 **Admin+Non-Admin**
@@ -48,7 +48,7 @@ async def invitelink(client, message):
             "Add me as admin of your group first!",
         )
         return
-    await message.reply_text(f"Invite link generated successfully! \n\n Link: {invitelink}")
+    await message.reply_text(f"Invite link generated successfully! \n\nLink: {invitelink}")
 
 
 @pbot.on_message(filters.command("cfilterhelp") & ~filters.private & ~filters.edited)
