@@ -383,7 +383,7 @@ async def antichanpin_cleanlinked(c, m: Message):
             await c.delete_messages(m.chat.id, msg_id)
     except ChatAdminRequired:
         await m.reply_text(
-            "Disabled antichannelpin as I don't have enough admin rights!",
+            "Disabled antichannelpin coz I don't have enough admin rights!",
         )
         pins_db.antichannelpin_off()
     except Exception:
