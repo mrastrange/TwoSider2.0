@@ -146,7 +146,7 @@ Make it easy to admins for manage users and groups with the admin module!
 - /whois : Gives user's info like pyrogram
 
 <b> Other </b>
-- /invitelink: Get chat's invitr link
+- /invitelink: Get chat's invite link
 - /settitle [entity] [title]: sets a custom title for an admin. If no [title] provided defaults to "Admin"
 - /setgrouptitle [text] set group title
 - /setgrouppic: reply to an image to set as group photo
@@ -154,6 +154,6 @@ Make it easy to admins for manage users and groups with the admin module!
 - /setsticker: Set group sticker
 
 *Note:
-Sometimes, you promote or demote an admin manually, and Daisy doesn't realise it immediately. This is because to avoid spamming telegram servers, admin status is cached locally.
-This means that you sometimes have to wait a few minutes for admin rights to update. If you want to update them immediately, you can use the /admincache command; that'll force Daisy to check who the admins are again.
+Sometimes, you promote or demote an admin manually, and TwoSider V2.0 doesn't realise it immediately. This is because to avoid spamming telegram servers, admin status is cached locally.
+This means that you sometimes have to wait a few minutes for admin rights to update. If you want to update them immediately, you can use the /admincache command; that'll force TwoSider V2.0 to check who the admins are again.
 """
