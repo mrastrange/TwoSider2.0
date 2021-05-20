@@ -453,11 +453,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
 __mod_name__ = "Image Editor"
 __help__ = """
 <b> IMAGE EDITOR </b>
-Daisy have some advanced image editing tools inbuilt
+TwoSider V2.0 have some advanced image editing tools inbuilt
 Bright, Circle, RemBG, Blur, Border, Flip, Glitch, Sticker maker and more
 
 - /edit [reply to image]: Open the image editor
 - /rmbg [REPLY]: Revove BG of replied image/sticker.
 
-<i> Special credits to TroJanzHEX </i>
 """
