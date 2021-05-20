@@ -81,19 +81,19 @@ async def get_start_func(message, strings, edit=False):
     buttons.add(
         InlineKeyboardButton(strings["btn_lang"], callback_data="lang_btn"),
         InlineKeyboardButton(
-            strings["btn_source"], url="https://github.com/TeamDaisyX/"
+            strings["btn_source"], url="https://github.com/mrastrange/TwoSider2.0"
         ),
     )
     buttons.add(
-        InlineKeyboardButton(strings["btn_channel"], url="https://t.me/DaisyXUpdates"),
+        InlineKeyboardButton(strings["btn_channel"], url="https://t.me/two_sider"),
         InlineKeyboardButton(
-            strings["btn_group"], url="https://t.me/DaisySupport_Official"
+            strings["btn_group"], url="https://t.me/two_sider_support"
         ),
     )
     buttons.add(
         InlineKeyboardButton(
-            "👸🏼 Add DaisyX to your group",
-            url=f"https://telegram.me/daisyxbot?startgroup=true",
+            "👸🏼 Add TwoSider V2.0 to your group",
+            url=f"https://t.me/twosider_bot?startgroup=true",
         )
     )
     # Handle error when user click the button 2 or more times simultaneously
@@ -135,7 +135,7 @@ async def help_cmd(message, strings):
 async def help_cmd_g(message, strings):
     text = strings["btn_group_help"]
     button = InlineKeyboardMarkup().add(
-        InlineKeyboardButton(text=text, url="https://t.me/DaisyXBOT?start")
+        InlineKeyboardButton(text=text, url="https://t.me/twosider_bot?start")
     )
     await message.reply(strings["help_header"], reply_markup=button)
 
