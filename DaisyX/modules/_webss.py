@@ -22,6 +22,6 @@ async def take_ss(_, message):
             photo=f"https://webshot.amanoteam.com/print?q={url}",
         )
     except TypeError:
-        await m.edit("No such website give me a valid url.")
+        await m.edit("No such website. Give me a valid url.")
         return
     await m.delete()
