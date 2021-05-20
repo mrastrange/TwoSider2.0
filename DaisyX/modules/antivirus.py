@@ -62,31 +62,31 @@ async def virusscan(event):
         else:
             return
     if not event.reply_to_msg_id:
-        await event.reply("Reply to a file to scan it.")
+        await event.reply("Please reply to a file to scan it.")
         return
 
     c = await event.get_reply_message()
     try:
         c.media.document
     except Exception:
-        await event.reply("Thats not a file.")
+        await event.reply("That's not a file.")
         return
     h = c.media
     try:
         k = h.document.attributes
     except Exception:
-        await event.reply("Thats not a file.")
+        await event.reply("That's not a file.")
         return
     if not isinstance(h, MessageMediaDocument):
-        await event.reply("Thats not a file.")
+        await event.reply("That's not a file.")
         return
     if not isinstance(k[0], DocumentAttributeFilename):
-        await event.reply("Thats not a file.")
+        await event.reply("That's not a file.")
         return
     try:
         virus = c.file.name
         await event.client.download_file(c, virus)
-        gg = await event.reply("Scanning the file ...")
+        gg = await event.reply("Scanning the file for malware...")
         fsize = c.file.size
         if not fsize <= 3145700:  # MAX = 3MB
             await gg.edit("File size exceeds 3MB")
@@ -99,18 +99,18 @@ async def virusscan(event):
             allow_password_protected_files=allow_password_protected_files,
         )
         if api_response.clean_result is True:
-            await gg.edit("This file is safe ✔️\nNo virus detected 🐞")
+            await gg.edit("This file is safe ✅\nNo Virus detected 🐞")
         else:
-            await gg.edit("This file is Dangerous ☠️️\nVirus detected 🐞")
+            await gg.edit("This file is Dangerous ❌\nVirus detected 🐞")
         os.remove(virus)
     except Exception as e:
         print(e)
         os.remove(virus)
-        await gg.edit("Some error occurred.")
+        await gg.edit("An unknown error occurred.")
         return
 
 
 _mod_name_ = "Virus Scan"
 _help_ = """
- - /scanit: Scan a file for virus (MAX SIZE = 3MB)
+ - /scanit: Reply to a file to scan for for viruses in it! (MAX SIZE = 3MB)
  """
