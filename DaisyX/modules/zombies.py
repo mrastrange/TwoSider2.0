@@ -99,7 +99,7 @@ async def zombies(event):
                 del_u += 1
                 await sleep(1)
         if del_u > 0:
-            del_status = f"Found **{del_u}** Zombies 🧟‍♀ In This Group.\
+            del_status = f"Found **{del_u}** Zombies In This Group.\
             \nClean Them By Using - `/zombies clean`"
         await find_zombies.edit(del_status)
         return
@@ -131,10 +131,10 @@ async def zombies(event):
             del_u += 1
 
     if del_u > 0:
-        del_status = f"Cleaned `{del_u}` Zombies 🧟‍♀"
+        del_status = f"Cleaned `{del_u}` Zombies 🧟‍.♀"
 
     if del_a > 0:
         del_status = f"Cleaned `{del_u}` Zombies \
-        \n`{del_a}` Zombie 🧟‍♀ Admin Accounts Are Not Removed!"
+        \n`{del_a}` Zombie Admin Accounts Are Not Removed!"
 
     await cleaning_zombies.edit(del_status)
