@@ -1,4 +1,3 @@
-
 <h1 align="center"><b>❤️ DaisyX 2.0  ❤️</b></h1>
 
 ## Unmaintained. The new repo of @DaisyXbot is private.
