@@ -18,13 +18,13 @@ import re
 
 import emoji
 
+IBM_WATSON_CRED_URL = "https://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/bd6b59ba-3134-4dd4-aff2-49a79641ea15"
+IBM_WATSON_CRED_PASSWORD = "UQ1MtTzZhEsMGK094klnfa-7y_4MCpJY1yhd52MXOo3Y"
 url = "https://acobot-brainshop-ai-v1.p.rapidapi.com/get"
 import re
 
 import aiohttp
-
-# from google_trans_new import google_translator
-from googletrans import Translator as google_translator
+from google_trans_new import google_translator
 from pyrogram import filters
 
 from DaisyX import BOT_ID
@@ -56,13 +56,44 @@ async def fetch(url):
                         data = await resp.text()
             return data
     except:
-        print("AI response Timeout")
+        print("TwoSider V2.0 AI response Timeout")
         return
 
 
 daisy_chats = []
 en_chats = []
 # AI Chat (C) 2020-2021 by @InukaAsith
+"""
+@daisyx.on_message(
+    filters.voice & filters.reply & ~filters.bot & ~filters.via_bot & ~filters.forwarded,
+    group=2,
+)
+async def hmm(client, message):
+    if not get_session(int(message.chat.id)):
+        message.continue_propagation()
+    if message.reply_to_message.from_user.id != BOT_ID:
+        message.continue_propagation()
+    previous_message = message
+    required_file_name = message.download()
+    if IBM_WATSON_CRED_URL is None or IBM_WATSON_CRED_PASSWORD is None:
+        await message.reply(
+            "Did not setup AI ENV var, Contact Support"
+        )
+    else:
+        headers = {
+            "Content-Type": previous_message.voice.mime_type,
+        }
+        data = open(required_file_name, "rb").read()
+        response = requests.post(
+            IBM_WATSON_CRED_URL + "/v1/recognize",
+            headers=headers,
+            data=data,
+            auth=("apikey", IBM_WATSON_CRED_PASSWORD),
+        )
+        r = response.json()
+        print(r)
+        await client.send_message(message, r)
+"""
 
 
 @daisyx.on_message(
@@ -73,7 +104,7 @@ async def hmm(_, message):
     global daisy_chats
     if len(message.command) != 2:
         await message.reply_text(
-            "I only recognize `/chatbot on` and /chatbot `off only`"
+            "I can recognize `/chatbot on` and /chatbot `off only`"
         )
         message.continue_propagation()
     status = message.text.split(None, 1)[1]
@@ -82,20 +113,20 @@ async def hmm(_, message):
         lel = await edit_or_reply(message, "`Processing...`")
         lol = add_chat(int(message.chat.id))
         if not lol:
-            await lel.edit("Daisy AI Already Activated In This Chat")
+            await lel.edit("TwoSider V2.0 AI IS Already Activated In This Chat")
             return
         await lel.edit(
-            f"Daisy AI Successfully Added For Users In The Chat {message.chat.id}"
+            f"TwoSider V2.0 Successfully Added For Users In The Chat {message.chat.id}"
         )
 
     elif status == "OFF" or status == "off" or status == "Off":
         lel = await edit_or_reply(message, "`Processing...`")
         Escobar = remove_chat(int(message.chat.id))
         if not Escobar:
-            await lel.edit("Daisy AI Was Not Activated In This Chat")
+            await lel.edit("TwoSider V2.0 Was Not Activated In This Chat")
             return
         await lel.edit(
-            f"Daisy AI Successfully Deactivated For Users In The Chat {message.chat.id}"
+            f"TwoSider V2.0 Successfully Deactivated For Users In The Chat {message.chat.id}"
         )
 
     elif status == "EN" or status == "en" or status == "english":
@@ -107,7 +138,7 @@ async def hmm(_, message):
         message.continue_propagation()
     else:
         await message.reply_text(
-            "I only recognize `/chatbot on` and /chatbot `off only`"
+            "I can recognize `/chatbot on` and /chatbot `off only`"
         )
 
 
@@ -183,14 +214,12 @@ async def hmm(client, message):
             # print (rm)
         try:
             lan = translator.detect(rm)
-            lan = lan.lang
         except:
             return
         test = rm
         if not "en" in lan and not lan == "":
             try:
-                test = translator.translate(test, dest="en")
-                test = test.text
+                test = translator.translate(test, lang_tgt="en")
             except:
                 return
         # test = emoji.demojize(test.strip())
@@ -202,13 +231,10 @@ async def hmm(client, message):
         )
         response = response.replace("Aco", "Daisy")
         response = response.replace("aco", "Daisy")
-        response = response.replace("Luna", "Daisy")
-        response = response.replace("luna", "Daisy")
         pro = response
         if not "en" in lan and not lan == "":
             try:
-                pro = translator.translate(pro, dest=lan)
-                pro = pro.text
+                pro = translator.translate(pro, lang_tgt=lan[0])
             except:
                 return
         try:
@@ -255,14 +281,12 @@ async def inuka(client, message):
         # print (rm)
     try:
         lan = translator.detect(rm)
-        lan = lan.lang
     except:
         return
     test = rm
     if not "en" in lan and not lan == "":
         try:
-            test = translator.translate(test, dest="en")
-            test = test.text
+            test = translator.translate(test, lang_tgt="en")
         except:
             return
 
@@ -278,8 +302,7 @@ async def inuka(client, message):
 
     pro = response
     if not "en" in lan and not lan == "":
-        pro = translator.translate(pro, dest=lan)
-        pro = pro.text
+        pro = translator.translate(pro, lang_tgt=lan[0])
     try:
         await daisyx.send_chat_action(message.chat.id, "typing")
         await message.reply_text(pro)
@@ -288,7 +311,7 @@ async def inuka(client, message):
 
 
 @daisyx.on_message(
-    filters.regex("Daisy|daisy|DaisyX|daisyx|Daisyx")
+    filters.regex("TwoSider|Plutonium X|Alpha Elite")
     & ~filters.bot
     & ~filters.via_bot
     & ~filters.forwarded
@@ -330,14 +353,12 @@ async def inuka(client, message):
         # print (rm)
     try:
         lan = translator.detect(rm)
-        lan = lan.lang
     except:
         return
     test = rm
     if not "en" in lan and not lan == "":
         try:
-            test = translator.translate(test, dest="en")
-            test = test.text
+            test = translator.translate(test, lang_tgt="en")
         except:
             return
 
@@ -352,8 +373,7 @@ async def inuka(client, message):
     pro = response
     if not "en" in lan and not lan == "":
         try:
-            pro = translator.translate(pro, dest=lan)
-            pro = pro.text
+            pro = translator.translate(pro, lang_tgt=lan[0])
         except Exception:
             return
     try:
@@ -365,15 +385,16 @@ async def inuka(client, message):
 
 __help__ = """
 <b> Chatbot </b>
-DAISY AI 3.0 IS THE ONLY AI SYSTEM WHICH CAN DETECT & REPLY UPTO 200 LANGUAGES
+TWOSIDER V2.0 IS THE ONLY AI SYSTEM WHICH CAN DETECT & REPLY UPTO 200 LANGUAGES
+
  - /chatbot [ON/OFF]: Enables and disables AI Chat mode (EXCLUSIVE)
  - /chatbot EN : Enables English only chatbot
-
-
+ 
+ 
 <b> Assistant </b>
- - /ask [question]: Ask question from daisy
+ - /ask [question]: Ask question from two sider 2.0
  - /ask [reply to voice note]: Get voice reply
-
+ 
 """
 
 __mod_name__ = "AI Assistant"
