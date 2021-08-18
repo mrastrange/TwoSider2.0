@@ -1,7 +1,7 @@
 # General
-telethon
+telethon==1.19.5
 pyrogram>=1.0.7
-aiogram
+aiogram == 2.13
 
 # DBs
 redis
@@ -117,7 +117,10 @@ Python_ARQ
 googletrans==4.0.0-rc1
 pyromod
 aiofiles
+pygithub
 
 
-#
-Skem==0.3.3
+
+
+
+

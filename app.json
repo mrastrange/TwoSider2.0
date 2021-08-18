@@ -1,15 +1,16 @@
 {
-  "name": "TwoSider V2.0",
+  "name": "DaisyX",
   "description": "?",
   "keywords": [
     "telegram",
-    "TwoSider V2,0",
+    "Daisy",
     "plugin",
-    "telegram-TwoSider V2.0",
-    "Telegramlove"
+    "telegram-DaisyX",
+    "fuck-TG"
   ],
-  "repository": "https://github.com/mrastrange/TwoSider2.0/",
-  "success_url": "t.me/two_sider",
+  "repository": "https://github.com/TeamDaisyX/Daisy-x",
+  "website": "daisyproject.studio",
+  "success_url": "t.me/DaisyXUpdates",
   "buildpacks": [
    {
      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
@@ -104,10 +105,10 @@
       "value": "",
       "required": true
     },
-    "LYDIA_API_KEY": {
-      "description": "AI chat",
+    "SUDO_USERS": {
+      "description": "For gbans",
       "value": "",
-      "required": false
+      "required": true
     },
     "DATABASE_URL": {
       "description": "get from elephantsql.com",

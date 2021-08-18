@@ -265,7 +265,7 @@ async def connect_anon_admins(event: CallbackQuery):
 __mod_name__ = "Connections"
 
 __help__ = """
-Sometimes you need change something in your chat, like notes, but you don't want to spam in it, try connections, this allow you change chat settings and manage chat's content in personal message with Two Sider V2.0
+Sometimes you need change something in your chat, like notes, but you don't want to spam in it, try connections, this allow you change chat settings and manage chat's content in personal message with Daisy.
 
 <b>Available commands are:</b>
 <b>Avaible only in PM:</b>
@@ -278,5 +278,5 @@ Sometimes you need change something in your chat, like notes, but you don't want
 - /connect: Direct connect to this group
 
 <b>Other commands:</b>
-- /allowusersconnect (on/off enable/disable): Enable or disable connection feature for regular users, for admins connections will always work.
+- /allowusersconnect (on/off enable/disable): Enable or disable connection feature for regular users, for admins connections will be works always
 """

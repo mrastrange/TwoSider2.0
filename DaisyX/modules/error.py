@@ -54,7 +54,7 @@ def catch_redis_error(**dec_kwargs):
                 if chat_id not in SENT:
                     text = (
                         "Sorry for inconvenience! I encountered error in my redis DB, which is necessary for  "
-                        "running bot \n\nPlease report this to @two_sider_support immediately when you see this error!"
+                        "running bot \n\nPlease report this to my support group immediately when you see this error!"
                     )
                     if await bot.send_message(chat_id, text):
                         SENT.append(chat_id)

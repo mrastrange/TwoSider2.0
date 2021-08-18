@@ -68,7 +68,7 @@ All the pin related commands can be found here; keep your chat up to date on the
 - /unpin: unpins the currently pinned message - add 'all' to unpin all pinned messages.
 
 <b> Other </b>
-- /permapin [reply]: Pin a custom message through the TwoSider V2.0. This message can contain markdown, buttons, and all the other cool features.
+- /permapin [reply]: Pin a custom message through the bot. This message can contain markdown, buttons, and all the other cool features.
 - /unpinall: Unpins all pinned messages.
 - /antichannelpin [yes/no/on/off]: Don't let telegram auto-pin linked channels. If no arguments are given, shows current setting.
 - /cleanlinked [yes/no/on/off]: Delete messages sent by the linked channel.

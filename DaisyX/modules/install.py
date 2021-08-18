@@ -18,12 +18,12 @@ async def install_module(_, message):
         return
     document = message.reply_to_message.document
     if document.mime_type != "text/x-python":
-        await message.reply_text("INVALID_MIME_TYPE, Reply to a valid .py file.")
+        await message.reply_text("INVALID_MIME_TYPE, Reply To A Correct .py File.")
         return
-    m = await message.reply_text("**Installing Module...**")
+    m = await message.reply_text("**Installing Module**")
     await message.reply_to_message.download(f"./DaisyX/modules/{document.file_name}")
-    await m.edit("**Restarting...**")
+    await m.edit("**Restarting**")
     os.execvp(
         f"python{str(pyver.split(' ')[0])[:3]}",
-        [f"python{str(pyver.split(' ')[0])[:3]}", "-m", "TwoSider V2.0"],
+        [f"python{str(pyver.split(' ')[0])[:3]}", "-m", "DaisyX"],
     )

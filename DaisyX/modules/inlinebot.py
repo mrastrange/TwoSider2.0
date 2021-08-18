@@ -4,7 +4,27 @@
 # Pokedex Inline Credit Red-Aura[Madepranav]
 # Credits Goes to WilliamButcherBot
 
-# This file is part of Daisy (Telegram Bot)
+
+# Some Parts Ported from https://github.com/TheHamkerCat/WilliamButcherBot
+"""
+MIT License
+Copyright (c) 2021 TheHamkerCat
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
 
 
 import datetime
@@ -66,12 +86,12 @@ class AioHttp:
 
 __mod_name__ = "Inline"
 __help__ = """
- <b> INLINE BOT SERVICE OF @TWOSIDER_BOT </b> 
+ <b> INLINE BOT SERVICE OF @DAISYXBOT </b> 
  
 <i> I'm more efficient when added as group admin. By the way these commands can be used by anyone in a group via inline.</i>
 
 <b>Syntax</b>
-   @twosider_bot [command] [query]
+   @DaisyXBot [command] [query]
 
 <b> Commands Available</b>
 - alive - Check Bot's Stats.
@@ -111,11 +131,11 @@ __help__ = """
 
 __MODULE__ = "Inline"
 __HELP__ = """
- ==>> **INLINE BOT SERVICE OF @TWOSIDER_BOT** <<==
+ ==>> **INLINE BOT SERVICE OF @DAISYXBOT** <<==
 `I'm more efficient when added as group admin. By the way these commands can be used by anyone in a group via inline.`
 
    >> Syntax <<
-@twosider_bot [command] [query]
+@DaisyXBot [command] [query]
 
    >> Commands Available <<
 - **alive** - __Check Bot's Stats.__

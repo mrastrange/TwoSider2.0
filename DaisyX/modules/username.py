@@ -86,11 +86,11 @@ async def _(event):
 
     if reply_message.sender.bot:
 
-        await event.edit("```Reply to an actual users message.```")
+        await event.edit("```Reply to actual users message.```")
 
         return
 
-    lol = await event.reply("```Processing...```")
+    lol = await event.reply("```Processing```")
 
     async with ubot.conversation(chat) as conv:
 
@@ -106,7 +106,7 @@ async def _(event):
             responses = await silently_send_message(conv, f"/detect_id {uid}")
         except YouBlockedUserError:
 
-            await event.reply("An unknown error occured, please contact [support](t.me/two_sider_support")
+            await event.reply("```Please unblock @DetectiveInfoBot and try again```")
 
             return
         await lol.edit(f"{responses.text}")

@@ -118,7 +118,7 @@ async def _(event):
         )
         if IBM_WATSON_CRED_URL is None or IBM_WATSON_CRED_PASSWORD is None:
             await event.reply(
-                "ENV variables not found. \nContact [Support](t.me/two_sider_support)"
+                "You need to set the required ENV variables for this module. \nModule stopping"
             )
         else:
             # await event.reply("Starting analysis")
@@ -166,6 +166,6 @@ async def _(event):
 _mod_name_ = "Text to Speech"
 
 _help_ = """
- - /tts: Reply to any message to get text to speech output.
- - /stt: Type in reply to a voice message (english only) to extract text from it.
+ - /tts: Reply to any message to get text to speech output
+ - /stt: Type in reply to a voice message(english only) to extract text from it.
 """

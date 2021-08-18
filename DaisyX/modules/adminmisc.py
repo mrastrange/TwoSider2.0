@@ -41,11 +41,11 @@ PP_ERROR = "**Failure while processing image**"
 NO_ADMIN = "**I am not an admin**"
 NO_PERM = "**I don't have sufficient permissions!**"
 
-CHAT_PP_CHANGED = "**Chat Picture Changed Successfully!**"
+CHAT_PP_CHANGED = "**Chat Picture Changed**"
 CHAT_PP_ERROR = (
     "**Some issue with updating the pic,**"
     "**maybe you aren't an admin,**"
-    "**or don't have the required rights.**"
+    "**or don't have the desired rights.**"
 )
 INVALID_MEDIA = "Invalid Extension"
 BANNED_RIGHTS = ChatBannedRights(
@@ -244,7 +244,7 @@ async def lowpromote(promt):
     # Try to promote if current user is admin or creator
     try:
         await bot(EditAdminRequest(promt.chat_id, user.id, new_rights, title))
-        await promt.reply("**Promoted Successfully!**")
+        await promt.reply("**Successfully promoted!**")
 
     # If Telethon spit BadRequestError, assume
     # we don't have Promote permission
@@ -267,7 +267,7 @@ async def midpromote(promt):
     user = await get_user_from_event(promt)
     if promt.is_group:
         if await is_register_admin(promt.input_chat, user.id):
-            await promt.reply("**Well! I can't promote user who is already an admin**")
+            await promt.reply("**Well! i cant promote user who is already an admin**")
             return
     else:
         return
@@ -298,7 +298,7 @@ async def midpromote(promt):
     # If Telethon spit BadRequestError, assume
     # we don't have Promote permission
     except Exception:
-        await promt.reply("Failed to promote the user.")
+        await promt.reply("Failed to promote.")
         return
 
 
@@ -316,7 +316,7 @@ async def highpromote(promt):
     user = await get_user_from_event(promt)
     if promt.is_group:
         if await is_register_admin(promt.input_chat, user.id):
-            await promt.reply("**Well! i can't promote user who is already an admin**")
+            await promt.reply("**Well! i cant promote user who is already an admin**")
             return
     else:
         return
@@ -342,7 +342,7 @@ async def highpromote(promt):
     # Try to promote if current user is admin or creator
     try:
         await bot(EditAdminRequest(promt.chat_id, user.id, new_rights, title))
-        await promt.reply("**Promoted Successfully!**")
+        await promt.reply("**Successfully promoted!**")
 
     # If Telethon spit BadRequestError, assume
     # we don't have Promote permission
@@ -362,7 +362,7 @@ async def lowdemote(dmod):
     user = await get_user_from_event(dmod)
     if dmod.is_group:
         if not await is_register_admin(dmod.input_chat, user.id):
-            await dmod.reply("**Hehe, i can't demote someone who is not a admin**")
+            await dmod.reply("**Hehe, i cant demote non-admin**")
             return
     else:
         return
@@ -389,7 +389,7 @@ async def lowdemote(dmod):
     # If we catch BadRequestError from Telethon
     # Assume we don't have permission to demote
     except Exception:
-        await dmod.reply("**Failed to demote!**")
+        await dmod.reply("**Failed to demote.**")
         return
 
 
@@ -601,7 +601,7 @@ async def banme(bon):
 
     try:
         await bot(EditBannedRequest(bon.chat_id, sender, BANNED_RIGHTS))
-        await bon.reply("Ok, I have banned you!")
+        await bon.reply("Ok Banned !")
 
     except Exception:
         await bon.reply("I don't think so!")
@@ -636,7 +636,7 @@ async def set_group_des(gpic):
         )
         await gpic.reply("Successfully set new group description.")
     except BaseException:
-        await gpic.reply("Failed to set group description!")
+        await gpic.reply("Failed to set group description.")
 
 
 @bot.on(events.NewMessage(pattern="/setsticker$"))
@@ -667,10 +667,10 @@ async def set_group_sticker(gpic):
                 stickerset=types.InputStickerSetID(id=id, access_hash=access_hash),
             )
         )
-        await gpic.reply("Group sticker pack successfully set!")
+        await gpic.reply("Group sticker pack successfully set !")
     except Exception as e:
         print(e)
-        await gpic.reply("Failed to set group sticker pack!")
+        await gpic.reply("Failed to set group sticker pack.")
 
 
 async def extract_time(message, time_val):

@@ -29,15 +29,15 @@ from DaisyX.services.pyrogram import pbot
 GENIUS = get_str_key("GENIUS_API_TOKEN", None)
 
 
-# Lel, Didn't Get Time To Make New One So Used Plugin Made by @mrconfused and @sandy1709 dont edit credits
+# Lel, Didn't Get Time To Make New One So Used Plugin Made br @mrconfused and @sandy1709 dont edit credits
 
 
 @pbot.on_message(filters.command(["lyric", "lyrics"]))
 async def _(client, message):
-    lel = await message.reply("Searching For Lyrics...")
+    lel = await message.reply("Searching For Lyrics.....")
     query = message.text
     if not query:
-        await lel.edit("`What I am Supposed to find?`")
+        await lel.edit("`What I am Supposed to find `")
         return
 
     song = ""
@@ -46,9 +46,9 @@ async def _(client, message):
         if song.lyrics:
             reply = song.format()
         else:
-            reply = "Couldn't find any lyrics for that song! try with artist name along with song if still doesnt work try /glyrics"
+            reply = "Couldn't find any lyrics for that song! try with artist name along with song if still doesnt work try `.glyrics`"
     else:
-        reply = "lyrics not found! try with artist name along with song if still doesnt work try /glyrics"
+        reply = "lyrics not found! try with artist name along with song if still doesnt work try `.glyrics`"
 
     if len(reply) > 4095:
         with io.BytesIO(str.encode(reply)) as out_file:
@@ -74,7 +74,7 @@ async def lyrics(client, message):
     else:
         await message.reply(
             "`Error: please use '-' as divider for <artist> and <song>`\n"
-            "eg: `/glyrics Nicki Minaj - Super Bass`"
+            "eg: `.glyrics Nicki Minaj - Super Bass`"
         )
         return
 
@@ -128,8 +128,8 @@ __mod_name__ = "Music"
 __help__ = """
 /video <i>query</i>: download video from youtube. 
 /deezer <i>query</i>: download from deezer. 
-/saavn <I>query</i>: download song from  jio saavn. 
-/music <i>query</i>: download song from youtube servers. (API BASED) 
+/saavn <I>query</i>: download song from saavn. 
+/music <i>query</i>: download song from yt servers. (API BASED) 
 /lyrics <i>song name</i> : This plugin searches for song lyrics with song name.
 /glyrics <i> song name </i> : This plugin searches for song lyrics with song name and artist.
 """

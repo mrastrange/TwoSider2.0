@@ -76,7 +76,7 @@ async def _(event):
         res = get(server)
         if "Wolfram Alpha did not understand" in res.text:
             await event.reply(
-                "Sorry, TwoSider V2.0's AI systems could't recognized your question.."
+                "Sorry, Daisy's AI systems could't recognized your question.."
             )
             return
         await event.reply(f"**{i}**\n\n" + res.text, parse_mode="markdown")
@@ -117,7 +117,7 @@ async def _(event):
 
                     if "Wolfram Alpha did not understand" in res:
                         answer = (
-                            "I'm sorry TwoSider V2.0's AI system can't undestand your problem"
+                            "I'm sorry Daisy's AI system can't undestand your problem"
                         )
                     else:
                         answer = res.text
@@ -145,7 +145,7 @@ async def _(event):
                     transcript_response == "Wolfram Alpha did not understand your input"
                 ):
                     try:
-                        answer = "Sorry, TwoSider V2.0's AI system can't understand you.."
+                        answer = "Sorry, Daisy's AI system can't understand you.."
                         tts = gTTS(answer, tld="com", lang="en")
                         tts.save("results.mp3")
                     except AssertionError:

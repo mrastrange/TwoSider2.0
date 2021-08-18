@@ -24,9 +24,8 @@ import sys
 
 import rapidjson
 import requests
-from Skem import skemmers
 
-from DaisyX import DAISY_VERSION, bot, dp
+from DaisyX import DAISY_VERSION, OWNER_ID, bot, dp
 from DaisyX.decorator import COMMANDS_ALIASES, REGISTRED_COMMANDS, register
 from DaisyX.modules import LOADED_MODULES
 from DaisyX.services.mongo import db, mongodb
@@ -34,7 +33,6 @@ from DaisyX.services.redis import redis
 from DaisyX.services.telethon import tbot
 
 from .utils.covert import convert_size
-from .utils.language import get_strings_dec
 from .utils.message import need_args_dec
 from .utils.notes import BUTTONS, get_parsed_note_list, send_note, t_unparse_note_item
 from .utils.term import chat_term
@@ -217,7 +215,7 @@ async def upload_file(message):
 
 @register(cmds="logs", is_op=True)
 async def upload_logs(message):
-    input_str = "logs/DaisyX.log"
+    input_str = "logs/daisy.log"
     with open(input_str, "rb") as f:
         await tbot.send_file(message.chat.id, f, reply_to=message.message_id)
 
@@ -237,7 +235,7 @@ async def get_event(message):
 
 @register(cmds="stats", is_op=True)
 async def stats(message):
-    if message.from_user.id in skemmers:
+    if message.from_user.id == OWNER_ID:
         text = f"<b>Daisy {DAISY_VERSION} stats</b>\n"
 
         for module in [m for m in LOADED_MODULES if hasattr(m, "__stats__")]:
@@ -271,10 +269,3 @@ async def __stats__():
         len(REGISTRED_COMMANDS), len(LOADED_MODULES)
     )
     return text
-
-
-@get_strings_dec("owner_stuff")
-async def __user_info__(message, user_id, strings):
-    global skemmers
-    if user_id in skemmers:
-        return strings["sudo_crown"]

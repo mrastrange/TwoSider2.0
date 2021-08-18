@@ -61,7 +61,7 @@ async def _(event):
     if event.is_group:
         if not (await is_register_admin(event.input_chat, event.message.sender_id)):
             await event.reply(
-                "You are not admin.. You can't use this command here.. But you can use it in my pm."
+                "Hai.. You are not admin.. You can't use this command.. But you can use in my pm"
             )
             return
 
@@ -143,11 +143,11 @@ async def _(event):
     if event.is_group:
         if not (await is_register_admin(event.input_chat, event.message.sender_id)):
             await event.reply(
-                "You are not admin.. You can't use this command here.. But you can use in my pm�."
+                " Hai.. You are not admin.. You can't use this command.. But you can use in my pm🙈"
             )
             return
 
-    mone = await event.reply("⏳ Processing ...")
+    mone = await event.reply("Processing ...")
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:

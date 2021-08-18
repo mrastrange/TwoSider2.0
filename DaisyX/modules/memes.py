@@ -85,7 +85,7 @@ async def msg(event):
     rtex = await event.get_reply_message()
     rtext = rtex.text
     if rtext is None:
-        await event.reply("Reply to a message to make meme.")
+        await event.reply("Reply to a message tto make meme.")
         return
     emojis = [
         "😂",
@@ -186,7 +186,7 @@ async def msg(event):
     else:
         data = event.pattern_match.group(1)
     if data is None:
-        await event.reply("Reply to a message.")
+        await event.reply("Either provide some input or reply to a message.")
         return
 
     reply_text = str(data).translate(WIDE_MAP)
@@ -240,7 +240,7 @@ async def msg(event):
     args = rtext
 
     if len(args) == 0:
-        await event.reply("Where is the text?")
+        await event.reply("Where is text?")
         return
 
     msg = "```"
@@ -298,12 +298,12 @@ CARBONLANG = "en"
 @register(pattern="^/carbon (.*)")
 async def carbon_api(e):
 
-    jj = "`Processing...`"
+    jj = "`Processing..`"
     gg = await e.reply(jj)
     CARBON = "https://carbon.now.sh/?bg=rgba(239%2C40%2C44%2C1)&t=one-light&wt=none&l=application%2Ftypescript&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=56px&ph=56px&ln=false&fl=1&fm=Hack&fs=14px&lh=143%25&si=false&es=2x&wm=false&code={code}"
     global CARBONLANG
     code = e.pattern_match.group(1)
-    await gg.edit("`Processing... 25%`")
+    await gg.edit("`Processing..\n25%`")
     os.chdir("./")
     if os.path.isfile("./carbon.png"):
         os.remove("./carbon.png")
@@ -319,7 +319,7 @@ async def carbon_api(e):
     chrome_options.add_experimental_option("prefs", prefs)
     driver = webdriver.Chrome(executable_path=CHROME_DRIVER, options=chrome_options)
     driver.get(url)
-    await gg.edit("`Processing... 50%`")
+    await gg.edit("`Processing..\n50%`")
     download_path = "./"
     driver.command_executor._commands["send_command"] = (
         "POST",
@@ -331,17 +331,17 @@ async def carbon_api(e):
     }
     driver.execute("send_command", params)
     driver.find_element_by_xpath("//button[contains(text(),'Export')]").click()
-    await gg.edit("`Processing... 75%`")
+    await gg.edit("`Processing..\n75%`")
     while not os.path.isfile("./carbon.png"):
         await asyncio.sleep(1)
-    await gg.edit("`Processed successfully: 100%`")
+    await gg.edit("`Processing..\n100%`")
     file = "./carbon.png"
-    await e.edit("`Uploading...`")
+    await e.edit("`Uploading..`")
     await tbot.send_file(
         e.chat_id,
         file,
         caption="Made using [Carbon](https://carbon.now.sh/about/),\
-        \nProcessed by @twosider_bot",
+        \na project by [Dawn Labs](https://dawnlabs.io/)",
         force_document=True,
     )
     os.remove("./carbon.png")
@@ -1095,7 +1095,6 @@ async def fortunate(event):
 
 ABUSE_STRINGS = (
     "Fuck off",
-    "Gtfo useless gey",
     "Stfu go fuck yourself",
     "Ur mum gey",
     "Ur dad lesbo",
@@ -1109,7 +1108,7 @@ ABUSE_STRINGS = (
     "GTFO bsdk",
     "CUnt",
     "Madharchod",
-    "Gay is here",
+    " Gay is here",
     "Ur dad gey bc ",
 )
 
@@ -1757,42 +1756,42 @@ file_help = file_help.replace(".py", "")
 file_helpo = file_help.replace("_", " ")
 
 __help__ = """
-**Few memes command, try it all out yourself!**
+**Some memes command, find it all out yourself !**
 
- - /owo: OWO de text.
- - /stretch: STRETCH de text.
- - /clapmoji: Type in reply to a message and see magic.
- - /bmoji: Type in reply to a message and see magic.
- - /copypasta: Type in reply to a message and see magic.
- - /vapor: owo vapor dis.
- - /shout <i>text</i>: Write anything that u want it to should.
- - /zalgofy: reply to a message to glitch it out!.
+ - /owo: OWO de text
+ - /stretch: STRETCH de text
+ - /clapmoji: Type in reply to a message and see magic
+ - /bmoji: Type in reply to a message and see magic
+ - /copypasta: Type in reply to a message and see magic
+ - /vapor: owo vapor dis
+ - /shout <i>text</i>: Write anything that u want it to should
+ - /zalgofy: reply to a message to glitch it out!
  - /table: get flip/unflip :v.
- - /decide: Randomly answers yes/no/maybe.
- - /bluetext: Must type for fun.
- - /toss: Tosses A coin.
- - /abuse: Abuses the cunt.
- - /insult: Insult the cunt.
- - /slap: Slaps the cunt.
+ - /decide: Randomly answers yes/no/maybe
+ - /bluetext: Must type for fun
+ - /toss: Tosses A coin
+ - /abuse: Abuses the cunt
+ - /insult: Insult the cunt
+ - /slap: Slaps the cunt
  - /roll: Roll a dice.
- - /rlg: Join ears,nose,mouth and create an emo ;-;.
- - /react: Check on your own.
- - /rhappy: Check on your own.
- - /rangry: Check on your own.
- - /angrymoji: Check on your own.
- - /crymoji: Check on your own.
- - /cowsay, /tuxsay , /milksay , /kisssay , /wwwsay , /defaultsay , /bunnysay , /moosesay , /sheepsay , /rensay , /cheesesay , /ghostbusterssay , /skeletonsay <i>text</i>: Returns a stylish art text from the given text.
- - /deepfry: Type this in reply to an image/sticker to roast the image/sticker.
- - /figlet: Another Style art.
- - /dice: Roll A dice.
- - /dart: Throw a dart and try your luck.
- - /basketball: Try your luck if you can enter the ball in the ring.
- - /type <i>text</i>: Make the bot type something for you in a professional way.
- - /carbon <i>text</i>: Beautifies your text and enwraps inside a terminal image [ENGLISH ONLY].
- - /sticklet <i>text</i>: Turn a text into a sticker.
- - /fortune: gets a random fortune quote.
- - /quotly: Type /quotly in reply to a message to make a sticker of that.
- - /animate: Enwrap your text in a beautiful anime.
+ - /rlg: Join ears,nose,mouth and create an emo ;-;
+ - /react: Check on your own
+ - /rhappy: Check on your own
+ - /rangry: Check on your own
+ - /angrymoji: Check on your own
+ - /crymoji: Check on your own
+ - /cowsay, /tuxsay , /milksay , /kisssay , /wwwsay , /defaultsay , /bunnysay , /moosesay , /sheepsay , /rensay , /cheesesay , /ghostbusterssay , /skeletonsay <i>text</i>: Returns a stylish art text from the given text
+ - /deepfry: Type this in reply to an image/sticker to roast the image/sticker
+ - /figlet: Another Style art
+ - /dice: Roll A dice
+ - /dart: Throw a dart and try your luck
+ - /basketball: Try your luck if you can enter the ball in the ring
+ - /type <i>text</i>: Make the bot type something for you in a professional way
+ - /carbon <i>text</i>: Beautifies your text and enwraps inside a terminal image [ENGLISH ONLY]
+ - /sticklet <i>text</i>: Turn a text into a sticker
+ - /fortune: gets a random fortune quote
+ - /quotly: Type /quotly in reply to a message to make a sticker of that
+ - /animate: Enwrap your text in a beautiful anime
  
 """
 

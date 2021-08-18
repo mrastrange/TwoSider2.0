@@ -22,6 +22,7 @@ from aiogram.bot.api import TELEGRAM_PRODUCTION, TelegramAPIServer
 from aiogram.contrib.fsm_storage.redis import RedisStorage2
 
 from DaisyX.config import get_bool_key, get_int_key, get_list_key, get_str_key
+from DaisyX.services.telethon import tbot
 from DaisyX.utils.logger import log
 from DaisyX.versions import DAISY_VERSION
 
@@ -74,7 +75,7 @@ POSTGRESS_URL = get_str_key("DATABASE_URL", required=True)
 TEMP_DOWNLOAD_DIRECTORY = "./"
 
 # Sudo Users
-# SUDO_USERS = get_str_key("SUDO_USERS", required=True)
+SUDO_USERS = get_str_key("SUDO_USERS", required=True)
 
 # String Session
 STRING_SESSION = get_str_key("STRING_SESSION", required=True)

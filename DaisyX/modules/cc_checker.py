@@ -111,7 +111,7 @@ async def alive(event):
             reply += f"Time: {time}\n"
             reply += f"Checked By **{fname}**"
         else:
-            reply = "Error, Report @two_sider_support"
+            reply = "Error, Report @LunaBotSupport"
         await k.edit(reply)
 
 

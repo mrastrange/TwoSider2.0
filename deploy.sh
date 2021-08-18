@@ -2,9 +2,9 @@
 echo "
 *********** STARTING DEPLOY ***********
 
-TWOSIDER V2.0 -Base Aiogram
-(C) 2020-2021 by @TWO_SIDER
-Support Chat is @TWO_SIDER_SUPPORT.
+DAISYX v2 -Base Aiogram
+(C) 2020-2021 by @TEAMDAISYX
+Support Chat is @DAISYSUPPORT_OFFICIAL.
 
 ***************************************
 "
@@ -30,15 +30,15 @@ ech_final () {
     echo "
     
 =++---------------------------------------------++=
-TWOSIDER. Deployed Successfully
+DAISYX. Deployed Successfully
 
  ***************************
- * |T| |W| |O| |S| |I| |D| |E| |R| *
- ******************* V2.0 ** 
+ * |D| |A| |I| |S| |Y| |X| *
+ ******************* v2.0 ** 
 
-Thanks for deploying TWOSIDER V2.0
-(C) 2020-2021 by @TWO_SIDER
-Support Chat is @TWO_SIDER_SUPPORT.
+Thanks for deploying DaisyX
+(C) 2020-2021 by @TEAMDAISYX
+Support Chat is @DAISYSUPPORT_OFFICIAL.
 =++---------------------------------------------++=
                        Greetings from dev team :)
     "

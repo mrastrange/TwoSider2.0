@@ -428,9 +428,9 @@ Here is how you can do it:
 - /poll 12345 | am i cool? | False False False yes no`
 - /poll 12345 | am i cool? | True@1 False False yes no`
 <b> To stop a poll </b>
-Reply to the poll with `/stoppoll [poll-id]` to stop the poll.
+Reply to the poll with `/stoppoll [poll-id]` to stop the poll
 <b> Fogot poll id </b>
-- /forgotpollid - to reset poll.
+- /forgotpollid - to reset poll
 
 """
 
