@@ -90,9 +90,10 @@ async def check_msg(message):
     text = message.text
 
     # Workaround to disable all filters if admin want to remove filter
-    if await is_user_admin(chat_id, message.from_user.id):
-        if text[1:].startswith("addfilter") or text[1:].startswith("delfilter"):
-            return
+    if await is_user_admin(chat_id, message.from_user.id) and (
+        text[1:].startswith("addfilter") or text[1:].startswith("delfilter")
+    ):
+        return
 
     for handler in filters:  # type: str
         if handler.startswith("re:"):
@@ -409,10 +410,7 @@ async def __export__(chat_id):
 
 
 async def __import__(chat_id, data):
-    new = []
-    for filter in data:
-        new.append(
-            UpdateOne(
+    new = [UpdateOne(
                 {
                     "chat_id": chat_id,
                     "handler": filter["handler"],
@@ -420,8 +418,7 @@ async def __import__(chat_id, data):
                 },
                 {"$set": filter},
                 upsert=True,
-            )
-        )
+            ) for filter in data]
     await db.filters.bulk_write(new)
     await update_handlers_cache(chat_id)
 

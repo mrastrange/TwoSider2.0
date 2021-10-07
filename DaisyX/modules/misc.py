@@ -210,7 +210,7 @@ async def ip(message):
     try:
         ip = message.text.split(maxsplit=1)[1]
     except IndexError:
-        await message.reply(f"Apparently you forgot something!")
+        await message.reply('Apparently you forgot something!')
         return
 
     response = await http.get(f"http://ip-api.com/json/{ip}")
@@ -224,14 +224,14 @@ async def ip(message):
 
     fixed_lookup = {}
 
+    special = {
+        "lat": "Latitude",
+        "lon": "Longitude",
+        "isp": "ISP",
+        "as": "AS",
+        "asname": "AS name",
+    }
     for key, value in lookup_json.items():
-        special = {
-            "lat": "Latitude",
-            "lon": "Longitude",
-            "isp": "ISP",
-            "as": "AS",
-            "asname": "AS name",
-        }
         if key in special:
             fixed_lookup[special[key]] = str(value)
             continue
@@ -244,10 +244,11 @@ async def ip(message):
 
         fixed_lookup[key] = str(value)
 
-    text = ""
+    text = "".join(
+        f"<b>{key}:</b> <code>{value}</code>\n"
+        for key, value in fixed_lookup.items()
+    )
 
-    for key, value in fixed_lookup.items():
-        text = text + f"<b>{key}:</b> <code>{value}</code>\n"
 
     await message.reply(text)
 

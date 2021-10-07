@@ -153,10 +153,8 @@ async def mute_user_cmd(message, chat, user, args, strings):
         else:
             await message.reply(strings["enter_time"])
             return
-    else:
-        # Add reason
-        if args is not None and len(args := args.split()) > 0:
-            text += strings["reason"] % " ".join(args[0:])
+    elif args is not None and len(args := args.split()) > 0:
+        text += strings["reason"] % " ".join(args[0:])
 
     # Check if silent
     silent = False
@@ -266,10 +264,8 @@ async def ban_user_cmd(message, chat, user, args, strings):
         else:
             await message.reply(strings["enter_time"])
             return
-    else:
-        # Add reason
-        if args is not None and len(args := args.split()) > 0:
-            text += strings["reason"] % " ".join(args[0:])
+    elif args is not None and len(args := args.split()) > 0:
+        text += strings["reason"] % " ".join(args[0:])
 
     # Check if silent
     silent = False
@@ -329,7 +325,7 @@ async def unban_user_cmd(message, chat, user, strings):
 
 @register(f="leave")
 async def leave_silent(message):
-    if not message.from_user.id == BOT_ID:
+    if message.from_user.id != BOT_ID:
         return
 
     if redis.get("leave_silent:" + str(message.chat.id)) == message.left_chat_member.id:
@@ -341,7 +337,7 @@ async def filter_handle_ban(message, chat, data: dict, strings=None):
     if await is_user_admin(chat["chat_id"], message.from_user.id):
         return
     if await ban_user(chat["chat_id"], message.from_user.id):
-        reason = data.get("reason", None) or strings["filter_action_rsn"]
+        reason = data.get("reason") or strings["filter_action_rsn"]
         text = strings["filtr_ban_success"] % (
             await get_user_link(BOT_ID),
             await get_user_link(message.from_user.id),

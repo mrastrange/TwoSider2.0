@@ -35,7 +35,6 @@ AFK_USERSS = {}
 
 def is_afk(user_id):
     return user_id in AFK_USERS
-    return user_id in AFK_USERSS
 
 
 def check_afk_status(user_id):

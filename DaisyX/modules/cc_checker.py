@@ -40,11 +40,10 @@ async def is_register_admin(chat, user):
 
 @register(pattern="^/gen (.*)")
 async def alive(event):
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        else:
-            return
+    if event.is_group and not await is_register_admin(
+        event.input_chat, event.message.sender_id
+    ):
+        return
     sender = await event.get_sender()
     fname = sender.first_name
     m = await event.reply("Generating CC...Pls Weit.")
@@ -74,11 +73,10 @@ async def alive(event):
 
 @register(pattern="^/key (.*)")
 async def alive(event):
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        else:
-            return
+    if event.is_group and not await is_register_admin(
+        event.input_chat, event.message.sender_id
+    ):
+        return
     sender = await event.get_sender()
     fname = sender.first_name
     ok = event.pattern_match.group(1)
@@ -99,13 +97,13 @@ async def alive(event):
             reply += f"Time: {time}\n"
             reply += f"Checked By **{fname}**"
         elif "Test" in response.text:
-            reply = f"SK Key : sk_live_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
+            reply = 'SK Key : sk_live_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n'
             reply += "Result: Test mode Key\n"
             reply += "RESPONSE: ❌Test Mode Key❌\n"
             reply += f"Time: {time}\n"
             reply += f"Checked By **{fname}**"
         elif "Valid" in response.text:
-            reply = f"SK Key : sk_live_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
+            reply = 'SK Key : sk_live_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n'
             reply += "Result: LIVE\n"
             reply += "RESPONSE: ✅Valid Key\n"
             reply += f"Time: {time}\n"
@@ -117,11 +115,10 @@ async def alive(event):
 
 @register(pattern="^/ss (.*)")
 async def alive(event):
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        else:
-            return
+    if event.is_group and not await is_register_admin(
+        event.input_chat, event.message.sender_id
+    ):
+        return
     sender = await event.get_sender()
     fname = sender.first_name
     ok = event.pattern_match.group(1)
@@ -150,11 +147,10 @@ async def alive(event):
 
 @register(pattern="^/pp (.*)")
 async def alive(event):
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        else:
-            return
+    if event.is_group and not await is_register_admin(
+        event.input_chat, event.message.sender_id
+    ):
+        return
     sender = await event.get_sender()
     fname = sender.first_name
     ok = event.pattern_match.group(1)
@@ -183,11 +179,10 @@ async def alive(event):
 
 @register(pattern="^/ch (.*)")
 async def alive(event):
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        else:
-            return
+    if event.is_group and not await is_register_admin(
+        event.input_chat, event.message.sender_id
+    ):
+        return
     sender = await event.get_sender()
     fname = sender.first_name
     ok = event.pattern_match.group(1)
@@ -216,11 +211,10 @@ async def alive(event):
 
 @register(pattern="^/au (.*)")
 async def alive(event):
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        else:
-            return
+    if event.is_group and not await is_register_admin(
+        event.input_chat, event.message.sender_id
+    ):
+        return
     sender = await event.get_sender()
     fname = sender.first_name
     ok = event.pattern_match.group(1)
@@ -249,11 +243,10 @@ async def alive(event):
 
 @register(pattern="^/bin (.*)")
 async def alive(event):
-    if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        else:
-            return
+    if event.is_group and not await is_register_admin(
+        event.input_chat, event.message.sender_id
+    ):
+        return
     sender = await event.get_sender()
     fname = sender.first_name
     k = await event.reply("**Wait for Result.**")
@@ -265,8 +258,6 @@ async def alive(event):
         res = response.text
         if "❌" in res:
             text = "🤬❌ INVALID BIN ❌🤬\n"
-            text += f"Checked By **{fname}**"
-            await k.edit(text)
         else:
             text = f"{res.splitlines()[0]}\n"
             text += f"{res.splitlines()[1]}\n"
@@ -275,5 +266,6 @@ async def alive(event):
             text += f"{res.splitlines()[4]}\n"
             text += f"{res.splitlines()[5]}\n"
             text += f"{res.splitlines()[6]}\n"
-            text += f"Checked By **{fname}**"
-            await k.edit(text)
+
+        text += f"Checked By **{fname}**"
+        await k.edit(text)

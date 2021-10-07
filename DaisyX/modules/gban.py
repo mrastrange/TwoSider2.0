@@ -41,21 +41,17 @@ edit_time = 3
 async def _(event):
     if event.fwd_from:
         return
-    if event.sender_id in SUDO_USERS:
-        pass
-    elif event.sender_id == OWNER_ID:
-        pass
-    else:
+    if event.sender_id not in SUDO_USERS and event.sender_id != OWNER_ID:
         return
 
     quew = event.pattern_match.group(1)
-    sun = "None"
     if "|" in quew:
         iid, reasonn = quew.split("|")
         cid = iid.strip()
         reason = reasonn.strip()
-    elif "|" not in quew:
+    else:
         cid = quew
+        sun = "None"
         reason = sun
     if cid.isnumeric():
         cid = int(cid)
@@ -118,11 +114,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.sender_id in SUDO_USERS:
-        pass
-    elif event.sender_id == OWNER_ID:
-        pass
-    else:
+    if event.sender_id not in SUDO_USERS and event.sender_id != OWNER_ID:
         return
 
     quew = event.pattern_match.group(1)
@@ -172,32 +164,27 @@ async def _(event):
 async def join_ban(event):
     if event.chat_id == int(sed):
         return
-    if event.chat_id == int(sed):
-        return
     user = event.user_id
     chats = gbanned.find({})
     for c in chats:
-        if user == c["user"]:
-            if event.user_joined:
-                try:
-                    to_check = get_reason(id=user)
-                    reason = to_check["reason"]
-                    bannerid = to_check["bannerid"]
-                    await tbot(EditBannedRequest(event.chat_id, user, BANNED_RIGHTS))
-                    await event.reply(
-                        "This user is gbanned and has been removed !\n\n**Gbanned By**: `{}`\n**Reason**: `{}`".format(
-                            bannerid, reason
-                        )
+        if user == c["user"] and event.user_joined:
+            try:
+                to_check = get_reason(id=user)
+                reason = to_check["reason"]
+                bannerid = to_check["bannerid"]
+                await tbot(EditBannedRequest(event.chat_id, user, BANNED_RIGHTS))
+                await event.reply(
+                    "This user is gbanned and has been removed !\n\n**Gbanned By**: `{}`\n**Reason**: `{}`".format(
+                        bannerid, reason
                     )
-                except Exception as e:
-                    print(e)
-                    return
+                )
+            except Exception as e:
+                print(e)
+                return
 
 
 @tbot.on(events.NewMessage(pattern=None))
 async def type_ban(event):
-    if event.chat_id == int(sed):
-        return
     if event.chat_id == int(sed):
         return
     chats = gbanned.find({})

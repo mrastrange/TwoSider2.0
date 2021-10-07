@@ -4,7 +4,7 @@ from DaisyX.config import get_str_key
 
 MONGO2 = get_str_key("FILTERS_MONGO", None)
 MONGO = get_str_key("MONGO_URI", required=True)
-if MONGO2 == None:
+if MONGO2 is None:
     MONGO2 = MONGO
 myclient = pymongo.MongoClient(MONGO2)
 mydb = myclient["Daisy"]
@@ -87,7 +87,7 @@ async def del_all(message, group_id, title):
         mycol.drop()
         await message.edit_text(f"All filters from {title} has been removed")
     except:
-        await message.edit_text(f"Couldn't remove all filters from group!")
+        await message.edit_text("Couldn't remove all filters from group!")
         return
 
 
@@ -113,7 +113,7 @@ async def filter_stats():
     for collection in collections:
         mycol = mydb[collection]
         count = mycol.count()
-        totalcount = totalcount + count
+        totalcount += count
 
     totalcollections = len(collections)
 

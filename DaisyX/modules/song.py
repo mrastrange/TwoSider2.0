@@ -100,7 +100,7 @@ async def ytmusic(client, message: Message):
             ytdl_data = ytdl.extract_info(mo, download=True)
 
     except Exception as e:
-        await pablo.edit(f"**Failed To Download** \n**Error :** `{str(e)}`")
+        await pablo.edit(f'**Failed To Download** \n**Error :** `{e}`')
         # dl_limit = dl_limit-1
         return
     c_time = time.time()
