@@ -79,19 +79,18 @@ def _onUnMuteRequest(client, cb):
                     text="❗ You have been muted by admins due to some other reason.",
                     show_alert=True,
                 )
-        else:
-            if not client.get_chat_member(chat_id, BOT_ID).status == "administrator":
-                client.send_message(
-                    chat_id,
-                    f"❗ **{cb.from_user.mention} is trying to UnMute himself but i can't unmute him because i am not an admin in this chat add me as admin again.**\n__#Leaving this chat...__",
-                )
+        elif client.get_chat_member(chat_id, BOT_ID).status != "administrator":
+            client.send_message(
+                chat_id,
+                f"❗ **{cb.from_user.mention} is trying to UnMute himself but i can't unmute him because i am not an admin in this chat add me as admin again.**\n__#Leaving this chat...__",
+            )
 
-            else:
-                client.answer_callback_query(
-                    cb.id,
-                    text="❗ Warning! Don't press the button when you cn talk.",
-                    show_alert=True,
-                )
+        else:
+            client.answer_callback_query(
+                cb.id,
+                text="❗ Warning! Don't press the button when you cn talk.",
+                show_alert=True,
+            )
 
 
 @pbot.on_message(filters.text & ~filters.private & ~filters.edited, group=1)
@@ -105,9 +104,9 @@ def _check_member(client, message):
             return
         try:
             if (
-                not client.get_chat_member(chat_id, user_id).status
-                in ("administrator", "creator")
-                and not user_id == 1141839926
+                client.get_chat_member(chat_id, user_id).status
+                not in ("administrator", "creator")
+                and user_id != 1141839926
             ):
                 channel = chat_db.channel
                 try:
@@ -197,17 +196,16 @@ def config(client, message):
                         disable_web_page_preview=True,
                     )
                 except (UsernameNotOccupied, PeerIdInvalid):
-                    message.reply_text(f"❗ **Invalid Channel Username.**")
+                    message.reply_text('❗ **Invalid Channel Username.**')
                 except Exception as err:
                     message.reply_text(f"❗ **ERROR:** ```{err}```")
+        elif sql.fs_settings(chat_id):
+            message.reply_text(
+                f"✅ **Force Subscribe is enabled in this chat.**\n__For this [Channel](https://t.me/{sql.fs_settings(chat_id).channel})__",
+                disable_web_page_preview=True,
+            )
         else:
-            if sql.fs_settings(chat_id):
-                message.reply_text(
-                    f"✅ **Force Subscribe is enabled in this chat.**\n__For this [Channel](https://t.me/{sql.fs_settings(chat_id).channel})__",
-                    disable_web_page_preview=True,
-                )
-            else:
-                message.reply_text("❌ **Force Subscribe is disabled in this chat.**")
+            message.reply_text("❌ **Force Subscribe is disabled in this chat.**")
     else:
         message.reply_text(
             "❗ **Group Creator Required**\n__You have to be the group creator to do that.__"

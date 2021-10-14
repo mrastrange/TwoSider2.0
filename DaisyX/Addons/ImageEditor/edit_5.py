@@ -37,13 +37,12 @@ async def normalglitch_1(client, message):
         print("normalglitch_1-error - " + str(e))
         if "USER_IS_BLOCKED" in str(e):
             return
-        else:
-            try:
-                await message.reply_to_message.reply_text(
-                    "Something went wrong!", quote=True
-                )
-            except Exception:
-                return
+        try:
+            await message.reply_to_message.reply_text(
+                "Something went wrong!", quote=True
+            )
+        except Exception:
+            return
 
 
 async def normalglitch_2(client, message):
@@ -79,13 +78,12 @@ async def normalglitch_2(client, message):
         print("normalglitch_2-error - " + str(e))
         if "USER_IS_BLOCKED" in str(e):
             return
-        else:
-            try:
-                await message.reply_to_message.reply_text(
-                    "Something went wrong!", quote=True
-                )
-            except Exception:
-                return
+        try:
+            await message.reply_to_message.reply_text(
+                "Something went wrong!", quote=True
+            )
+        except Exception:
+            return
 
 
 async def normalglitch_3(client, message):
@@ -121,13 +119,12 @@ async def normalglitch_3(client, message):
         print("normalglitch_3-error - " + str(e))
         if "USER_IS_BLOCKED" in str(e):
             return
-        else:
-            try:
-                await message.reply_to_message.reply_text(
-                    "Something went wrong!", quote=True
-                )
-            except Exception:
-                return
+        try:
+            await message.reply_to_message.reply_text(
+                "Something went wrong!", quote=True
+            )
+        except Exception:
+            return
 
 
 async def normalglitch_4(client, message):
@@ -163,13 +160,12 @@ async def normalglitch_4(client, message):
         print("normalglitch_4-error - " + str(e))
         if "USER_IS_BLOCKED" in str(e):
             return
-        else:
-            try:
-                await message.reply_to_message.reply_text(
-                    "Something went wrong!", quote=True
-                )
-            except Exception:
-                return
+        try:
+            await message.reply_to_message.reply_text(
+                "Something went wrong!", quote=True
+            )
+        except Exception:
+            return
 
 
 async def normalglitch_5(client, message):
@@ -205,13 +201,12 @@ async def normalglitch_5(client, message):
         print("normalglitch_5-error - " + str(e))
         if "USER_IS_BLOCKED" in str(e):
             return
-        else:
-            try:
-                await message.reply_to_message.reply_text(
-                    "Something went wrong!", quote=True
-                )
-            except Exception:
-                return
+        try:
+            await message.reply_to_message.reply_text(
+                "Something went wrong!", quote=True
+            )
+        except Exception:
+            return
 
 
 async def scanlineglitch_1(client, message):
@@ -247,13 +242,12 @@ async def scanlineglitch_1(client, message):
         print("scanlineglitch_1-error - " + str(e))
         if "USER_IS_BLOCKED" in str(e):
             return
-        else:
-            try:
-                await message.reply_to_message.reply_text(
-                    "Something went wrong!", quote=True
-                )
-            except Exception:
-                return
+        try:
+            await message.reply_to_message.reply_text(
+                "Something went wrong!", quote=True
+            )
+        except Exception:
+            return
 
 
 async def scanlineglitch_2(client, message):
@@ -289,13 +283,12 @@ async def scanlineglitch_2(client, message):
         print("scanlineglitch_2-error - " + str(e))
         if "USER_IS_BLOCKED" in str(e):
             return
-        else:
-            try:
-                await message.reply_to_message.reply_text(
-                    "Something went wrong!", quote=True
-                )
-            except Exception:
-                return
+        try:
+            await message.reply_to_message.reply_text(
+                "Something went wrong!", quote=True
+            )
+        except Exception:
+            return
 
 
 async def scanlineglitch_3(client, message):
@@ -331,13 +324,12 @@ async def scanlineglitch_3(client, message):
         print("scanlineglitch_3-error - " + str(e))
         if "USER_IS_BLOCKED" in str(e):
             return
-        else:
-            try:
-                await message.reply_to_message.reply_text(
-                    "Something went wrong!", quote=True
-                )
-            except Exception:
-                return
+        try:
+            await message.reply_to_message.reply_text(
+                "Something went wrong!", quote=True
+            )
+        except Exception:
+            return
 
 
 async def scanlineglitch_4(client, message):
@@ -373,13 +365,12 @@ async def scanlineglitch_4(client, message):
         print("scanlineglitch_4-error - " + str(e))
         if "USER_IS_BLOCKED" in str(e):
             return
-        else:
-            try:
-                await message.reply_to_message.reply_text(
-                    "Something went wrong!", quote=True
-                )
-            except Exception:
-                return
+        try:
+            await message.reply_to_message.reply_text(
+                "Something went wrong!", quote=True
+            )
+        except Exception:
+            return
 
 
 async def scanlineglitch_5(client, message):
@@ -415,10 +406,9 @@ async def scanlineglitch_5(client, message):
         print("scanlineglitch_5-error - " + str(e))
         if "USER_IS_BLOCKED" in str(e):
             return
-        else:
-            try:
-                await message.reply_to_message.reply_text(
-                    "Something went wrong!", quote=True
-                )
-            except Exception:
-                return
+        try:
+            await message.reply_to_message.reply_text(
+                "Something went wrong!", quote=True
+            )
+        except Exception:
+            return

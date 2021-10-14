@@ -72,7 +72,7 @@ async def welcome(message, chat, strings):
     send_id = message.chat.id
 
     if len(args := message.get_args().split()) > 0:
-        no_format = True if "no_format" == args[0] or "raw" == args[0] else False
+        no_format = args[0] in ["no_format", "raw"]
     else:
         no_format = None
 
@@ -334,26 +334,18 @@ async def welcome_mute(message, chat, strings):
         )
         await get_greetings_data.reset_cache(chat_id)
         text = strings["welcomemute_enabled"] % chat["chat_title"]
-        try:
-            await message.reply(text)
-        except BadRequest:
-            await message.answer(text)
     elif args[0] in no:
         text = strings["welcomemute_disabled"] % chat["chat_title"]
         await db.greetings.update_one(
             {"chat_id": chat_id}, {"$unset": {"welcome_mute": 1}}, upsert=True
         )
         await get_greetings_data.reset_cache(chat_id)
-        try:
-            await message.reply(text)
-        except BadRequest:
-            await message.answer(text)
     else:
         text = strings["welcomemute_invalid_arg"]
-        try:
-            await message.reply(text)
-        except BadRequest:
-            await message.answer(text)
+    try:
+        await message.reply(text)
+    except BadRequest:
+        await message.answer(text)
 
 
 # Welcome Security
@@ -593,9 +585,8 @@ async def welcome_security_handler(message: Message, strings):
 
     user = await message.chat.get_member(user_id)
     # Check if user was muted before
-    if user["status"] == "restricted":
-        if user["can_send_messages"] is False:
-            return
+    if user["status"] == "restricted" and user["can_send_messages"] is False:
+        return
 
     # Check on OPs and chat owner
     if await is_user_admin(chat_id, user_id):
@@ -686,7 +677,7 @@ async def ws_redirecter(message, strings):
     called_user_id = message.from_user.id
 
     url = f"https://t.me/{BOT_USERNAME}?start=ws_{chat_id}_{called_user_id}_{message.message.message_id}"
-    if not called_user_id == real_user_id:
+    if called_user_id != real_user_id:
         # The persons which are muted before wont have their signatures registered on cache
         if not redis.exists(f"welcome_security_users:{called_user_id}:{chat_id}"):
             await message.answer(strings["not_allowed"], show_alert=True)
@@ -826,7 +817,7 @@ async def check_captcha_text(message, strings, state=None, **kwargs):
     async with state.proxy() as data:
         captcha_num = data["captcha_num"]
 
-    if not int(num) == int(captcha_num):
+    if int(num) != int(captcha_num):
         await message.reply(strings["bad_num"])
         return
 
@@ -910,7 +901,7 @@ async def wc_math_check_cb(event, strings, state=None, **kwargs):
             await event.message.delete()
             return
 
-    if not num == answer:
+    if num != answer:
         await send_btn_math(event.message, state, msg_id=event.message.message_id)
         await event.answer(strings["math_wc_wrong"], show_alert=True)
         return

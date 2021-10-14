@@ -40,9 +40,7 @@ from .utils.term import chat_term
 
 @register(cmds="allcommands", is_op=True)
 async def all_commands_list(message):
-    text = ""
-    for cmd in REGISTRED_COMMANDS:
-        text += "* /" + cmd + "\n"
+    text = "".join("* /" + cmd + "\n" for cmd in REGISTRED_COMMANDS)
     await message.reply(text)
 
 
@@ -55,9 +53,7 @@ async def all_cmds_aliases_list(message):
 
 @register(cmds="loadedmodules", is_op=True)
 async def all_modules_list(message):
-    text = ""
-    for module in LOADED_MODULES:
-        text += "* " + module.__name__ + "\n"
+    text = "".join("* " + module.__name__ + "\n" for module in LOADED_MODULES)
     await message.reply(text)
 
 
@@ -86,8 +82,6 @@ async def cmd_term(message):
             + "</code>"
         )
         await msg.edit_text(text)
-    else:
-        pass
 
 
 @register(cmds="leavechat", is_owner=True)
@@ -242,8 +236,6 @@ async def stats(message):
             text += await module.__stats__()
 
         await message.reply(text)
-    else:
-        pass
 
 
 async def __stats__():

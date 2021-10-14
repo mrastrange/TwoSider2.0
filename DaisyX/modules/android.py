@@ -329,7 +329,7 @@ async def orangefox(message):
     if build_type == "":
         build_type = "stable"
 
-    if codename == "devices" or codename == "":
+    if codename in {"devices", ""}:
         reply_text = (
             f"<b>OrangeFox Recovery <i>{build_type}</i> is currently avaible for:</b>"
         )
@@ -354,13 +354,15 @@ async def orangefox(message):
         if build_type == "stable":
             reply_text += (
                 "\n\n"
-                + f"To get the latest Stable release use <code>/ofox (codename)</code>, for example: <code>/ofox raphael</code>"
+                + 'To get the latest Stable release use <code>/ofox (codename)</code>, for example: <code>/ofox raphael</code>'
             )
+
         elif build_type == "beta":
             reply_text += (
                 "\n\n"
-                + f"To get the latest Beta release use <code>/ofox (codename) beta</code>, for example: <code>/ofox raphael beta</code>"
+                + 'To get the latest Beta release use <code>/ofox (codename) beta</code>, for example: <code>/ofox raphael beta</code>'
             )
+
         await message.reply(reply_text)
         return
 

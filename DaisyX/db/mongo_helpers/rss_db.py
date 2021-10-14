@@ -12,8 +12,7 @@ def del_rss(chat_id, rss_link):
 
 
 def get_chat_rss(chat_id):
-    lol = list(rss.find({"chat_id": chat_id}))
-    return lol
+    return list(rss.find({"chat_id": chat_id}))
 
 
 def update_rss(chat_id, rss_link, latest_rss):
@@ -24,31 +23,21 @@ def update_rss(chat_id, rss_link, latest_rss):
 
 def is_get_chat_rss(chat_id, rss_link):
     lol = rss.find_one({"chat_id": chat_id, "rss_link": rss_link})
-    if lol:
-        return True
-    else:
-        return False
+    return bool(lol)
 
 
 def basic_check(chat_id):
     lol = rss.find_one({"chat_id": chat_id})
-    if lol:
-        return True
-    else:
-        return False
+    return bool(lol)
 
 
 def overall_check():
     lol = rss.find_one()
-    if lol:
-        return True
-    else:
-        return False
+    return bool(lol)
 
 
 def get_all():
-    lol = rss.find()
-    return lol
+    return rss.find()
 
 
 def delete_all():

@@ -94,9 +94,7 @@ async def process(msg, user, client, reply, replied=None):
                     width = mono.getsize(line)[0] + 30
                 else:
                     width = fallback.getsize(line)[0]
-            if maxlength < length:
-                maxlength = length
-
+            maxlength = max(maxlength, length)
     title = ""
     try:
         details = await client(
@@ -208,7 +206,7 @@ async def process(msg, user, client, reply, replied=None):
         canvas.paste(stimg, (pfpbg.width + 10, 10))
         os.remove(sticker)
         return True, canvas
-    elif reply.document and not reply.audio and not reply.audio:
+    elif reply.document and not reply.audio:
         docname = ".".join(reply.document.attributes[-1].file_name.split(".")[:-1])
         doctype = reply.document.attributes[-1].file_name.split(".")[-1].upper()
         if reply.document.size < 1024:

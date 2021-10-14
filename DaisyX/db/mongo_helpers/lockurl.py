@@ -7,18 +7,16 @@ def add_chat(chat_id):
     stark = lockurl.find_one({"chat_id": chat_id})
     if stark:
         return False
-    else:
-        lockurl.insert_one({"chat_id": chat_id})
-        return True
+    lockurl.insert_one({"chat_id": chat_id})
+    return True
 
 
 def remove_chat(chat_id):
     stark = lockurl.find_one({"chat_id": chat_id})
     if not stark:
         return False
-    else:
-        lockurl.delete_one({"chat_id": chat_id})
-        return True
+    lockurl.delete_one({"chat_id": chat_id})
+    return True
 
 
 def get_all_chats():

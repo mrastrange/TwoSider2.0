@@ -77,10 +77,9 @@ async def warn_func(message: Message, chat, user, text, strings, filter_action=F
         await message.reply(strings["warn_sofi"])
         return
 
-    if not filter_action:
-        if user_id == message.from_user.id:
-            await message.reply(strings["warn_self"])
-            return
+    if not filter_action and user_id == message.from_user.id:
+        await message.reply(strings["warn_self"])
+        return
 
     if await is_user_admin(chat_id, user_id):
         if not filter_action:
@@ -137,32 +136,31 @@ async def warn_func(message: Message, chat, user, text, strings, filter_action=F
     else:
         action = functools.partial(message.reply, disable_notification=True)
 
-    if warns_count >= max_warn:
-        if await max_warn_func(chat_id, user_id):
-            await db.warns.delete_many({"user_id": user_id, "chat_id": chat_id})
-            data = await db.warnmode.find_one({"chat_id": chat_id})
-            if data is not None:
-                if data["mode"] == "tmute":
-                    text = strings["max_warn_exceeded:tmute"].format(
-                        user=member,
-                        time=format_timedelta(
-                            convert_time(data["time"]),
-                            locale=strings["language_info"]["babel"],
-                        ),
-                    )
-                else:
-                    text = strings["max_warn_exceeded"].format(
-                        user=member,
-                        action=strings["banned"]
-                        if data["mode"] == "ban"
-                        else strings["muted"],
-                    )
-                return await action(text=text)
-            return await action(
-                text=strings["max_warn_exceeded"].format(
-                    user=member, action=strings["banned"]
+    if warns_count >= max_warn and await max_warn_func(chat_id, user_id):
+        await db.warns.delete_many({"user_id": user_id, "chat_id": chat_id})
+        data = await db.warnmode.find_one({"chat_id": chat_id})
+        if data is not None:
+            if data["mode"] == "tmute":
+                text = strings["max_warn_exceeded:tmute"].format(
+                    user=member,
+                    time=format_timedelta(
+                        convert_time(data["time"]),
+                        locale=strings["language_info"]["babel"],
+                    ),
                 )
+            else:
+                text = strings["max_warn_exceeded"].format(
+                    user=member,
+                    action=strings["banned"]
+                    if data["mode"] == "ban"
+                    else strings["muted"],
+                )
+            return await action(text=text)
+        return await action(
+            text=strings["max_warn_exceeded"].format(
+                user=member, action=strings["banned"]
             )
+        )
     text += strings["warn_num"].format(curr_warns=warns_count, max_warns=max_warn)
     return await action(text=text, reply_markup=buttons, disable_web_page_preview=True)
 
@@ -285,7 +283,11 @@ async def warnmode(message, chat, strings):
             data := await db.warnmode.find_one({"chat_id": chat_id})
         ) is not None and data["mode"] == option:
             return await message.reply(strings["same_mode"])
-        if arg[0] == acceptable_args[0]:
+        if (
+            arg[0] == acceptable_args[0]
+            or arg[0] != acceptable_args[1]
+            and arg[0] == acceptable_args[2]
+        ):
             new["mode"] = option
             await db.warnmode.update_one(
                 {"chat_id": chat_id}, {"$set": new}, upsert=True
@@ -307,11 +309,6 @@ async def warnmode(message, chat, strings):
                     await db.warnmode.update_one(
                         {"chat_id": chat_id}, {"$set": new}, upsert=True
                     )
-        elif arg[0] == acceptable_args[2]:
-            new["mode"] = option
-            await db.warnmode.update_one(
-                {"chat_id": chat_id}, {"$set": new}, upsert=True
-            )
         await message.reply(strings["warnmode_success"] % (chat["chat_title"], option))
     else:
         text = ""
@@ -324,16 +321,16 @@ async def warnmode(message, chat, strings):
 
 
 async def max_warn_func(chat_id, user_id):
-    if (data := await db.warnmode.find_one({"chat_id": chat_id})) is not None:
-        if data["mode"] == "ban":
-            return await ban_user(chat_id, user_id)
-        elif data["mode"] == "tmute":
-            time = convert_time(data["time"])
-            return await mute_user(chat_id, user_id, time)
-        elif data["mode"] == "mute":
-            return await mute_user(chat_id, user_id)
-    else:  # Default
+    if data := await db.warnmode.find_one({"chat_id": chat_id}) is None:  # Default
         return await ban_user(chat_id, user_id)
+
+    if data["mode"] == "ban":
+        return await ban_user(chat_id, user_id)
+    elif data["mode"] == "tmute":
+        time = convert_time(data["time"])
+        return await mute_user(chat_id, user_id, time)
+    elif data["mode"] == "mute":
+        return await mute_user(chat_id, user_id)
 
 
 async def __export__(chat_id):
@@ -353,10 +350,7 @@ async def __export__(chat_id):
 async def __import__(chat_id, data):
     if "warns_limit" in data:
         number = data["warns_limit"]
-        if number < 2:
-            return
-
-        elif number > 10000:  # Max value
+        if number < 2 or number > 10000:
             return
 
         await db.warnlimit.update_one(

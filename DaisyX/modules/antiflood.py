@@ -81,10 +81,11 @@ class AntifloodEnforcer(BaseMiddleware):
         data.count += 1
 
         # check exceeding
-        if data.count >= database["count"]:
-            if await self.do_action(message, database):
-                self.reset_flood(message)
-                return True
+        if data.count >= database["count"] and await self.do_action(
+            message, database
+        ):
+            self.reset_flood(message)
+            return True
 
         self.insert_flood(data, message, database)
         return False
@@ -92,11 +93,9 @@ class AntifloodEnforcer(BaseMiddleware):
     @classmethod
     def is_message_valid(cls, message) -> bool:
         _pre = [ContentType.NEW_CHAT_MEMBERS, ContentType.LEFT_CHAT_MEMBER]
-        if message.content_type in _pre:
-            return False
-        elif message.chat.type in (ChatType.PRIVATE,):
-            return False
-        return True
+        return message.content_type not in _pre and message.chat.type not in (
+            ChatType.PRIVATE,
+        )
 
     def get_flood(self, message) -> Optional[CacheModel]:
         if data := bredis.get(self.cache_key(message)):
@@ -107,9 +106,10 @@ class AntifloodEnforcer(BaseMiddleware):
     def insert_flood(self, data: CacheModel, message: Message, database: dict):
         ex = (
             convert_time(database["time"])
-            if database.get("time", None) is not None
+            if database.get("time") is not None
             else None
         )
+
         return bredis.set(self.cache_key(message), pickle.dumps(data), ex=ex)
 
     def reset_flood(self, message):
@@ -132,7 +132,7 @@ class AntifloodEnforcer(BaseMiddleware):
 
     @classmethod
     async def do_action(cls, message: Message, database: dict):
-        action = database["action"] if "action" in database else "ban"
+        action = database.get("action", "ban")
 
         if action == "ban":
             return await ban_user(message.chat.id, message.from_user.id)
@@ -141,7 +141,7 @@ class AntifloodEnforcer(BaseMiddleware):
         elif action == "mute":
             return await mute_user(message.chat.id, message.from_user.id)
         elif action.startswith("t"):
-            time = database.get("time", None)
+            time = database.get("time")
             if not time:
                 return False
             if action == "tmute":

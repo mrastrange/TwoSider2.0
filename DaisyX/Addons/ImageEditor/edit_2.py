@@ -13,7 +13,6 @@ async def circle_with_bg(client, message):
         if not os.path.isdir(f"./DOWNLOADS/{userid}"):
             os.makedirs(f"./DOWNLOADS/{userid}")
         download_location = "./DOWNLOADS" + "/" + userid + "/" + userid + ".jpg"
-        edit_img_loc = "./DOWNLOADS" + "/" + userid + "/" + "circle.png"
         if not message.reply_to_message.empty:
             msg = await message.reply_to_message.reply_text(
                 "Downloading image", quote=True
@@ -30,6 +29,7 @@ async def circle_with_bg(client, message):
             draw.pieslice([0, 0, h, w], 0, 360, fill=255)
             npAlpha = np.array(alpha)
             npImage = np.dstack((npImage, npAlpha))
+            edit_img_loc = "./DOWNLOADS" + "/" + userid + "/" + "circle.png"
             Image.fromarray(npImage).save(edit_img_loc)
             await message.reply_chat_action("upload_photo")
             await message.reply_to_message.reply_photo(edit_img_loc, quote=True)
@@ -44,13 +44,12 @@ async def circle_with_bg(client, message):
         print("circle_with_bg-error - " + str(e))
         if "USER_IS_BLOCKED" in str(e):
             return
-        else:
-            try:
-                await message.reply_to_message.reply_text(
-                    "Something went wrong!", quote=True
-                )
-            except Exception:
-                return
+        try:
+            await message.reply_to_message.reply_text(
+                "Something went wrong!", quote=True
+            )
+        except Exception:
+            return
 
 
 async def circle_without_bg(client, message):
@@ -59,7 +58,6 @@ async def circle_without_bg(client, message):
         if not os.path.isdir(f"./DOWNLOADS/{userid}"):
             os.makedirs(f"./DOWNLOADS/{userid}")
         download_location = "./DOWNLOADS" + "/" + userid + "/" + userid + ".jpg"
-        edit_img_loc = "./DOWNLOADS" + "/" + userid + "/" + "circle.png"
         if not message.reply_to_message.empty:
             msg = await message.reply_to_message.reply_text(
                 "Downloading image", quote=True
@@ -76,6 +74,7 @@ async def circle_without_bg(client, message):
             draw.pieslice([0, 0, h, w], 0, 360, fill=255)
             npAlpha = np.array(alpha)
             npImage = np.dstack((npImage, npAlpha))
+            edit_img_loc = "./DOWNLOADS" + "/" + userid + "/" + "circle.png"
             Image.fromarray(npImage).save(edit_img_loc)
             await message.reply_chat_action("upload_document")
             await message.reply_to_message.reply_document(edit_img_loc, quote=True)
@@ -90,13 +89,12 @@ async def circle_without_bg(client, message):
         print("circle_without_bg-error - " + str(e))
         if "USER_IS_BLOCKED" in str(e):
             return
-        else:
-            try:
-                await message.reply_to_message.reply_text(
-                    "Something went wrong!", quote=True
-                )
-            except Exception:
-                return
+        try:
+            await message.reply_to_message.reply_text(
+                "Something went wrong!", quote=True
+            )
+        except Exception:
+            return
 
 
 async def sticker(client, message):
@@ -127,13 +125,12 @@ async def sticker(client, message):
         print("sticker-error - " + str(e))
         if "USER_IS_BLOCKED" in str(e):
             return
-        else:
-            try:
-                await message.reply_to_message.reply_text(
-                    "Something went wrong!", quote=True
-                )
-            except Exception:
-                return
+        try:
+            await message.reply_to_message.reply_text(
+                "Something went wrong!", quote=True
+            )
+        except Exception:
+            return
 
 
 def add_corners(im, rad):
@@ -156,7 +153,6 @@ async def edge_curved(client, message):
         if not os.path.isdir(f"./DOWNLOADS/{userid}"):
             os.makedirs(f"./DOWNLOADS/{userid}")
         download_location = "./DOWNLOADS" + "/" + userid + "/" + userid + ".jpg"
-        edit_img_loc = "./DOWNLOADS" + "/" + userid + "/" + "edge_curved.webp"
         if not message.reply_to_message.empty:
             msg = await message.reply_to_message.reply_text(
                 "Downloading image", quote=True
@@ -167,6 +163,7 @@ async def edge_curved(client, message):
             await msg.edit("Processing Image...")
             im = Image.open(a)
             im = add_corners(im, 100)
+            edit_img_loc = "./DOWNLOADS" + "/" + userid + "/" + "edge_curved.webp"
             im.save(edit_img_loc)
             await message.reply_chat_action("upload_photo")
             await message.reply_to_message.reply_sticker(edit_img_loc, quote=True)
@@ -181,13 +178,12 @@ async def edge_curved(client, message):
         print("edge_curved-error - " + str(e))
         if "USER_IS_BLOCKED" in str(e):
             return
-        else:
-            try:
-                await message.reply_to_message.reply_text(
-                    "Something went wrong!", quote=True
-                )
-            except Exception:
-                return
+        try:
+            await message.reply_to_message.reply_text(
+                "Something went wrong!", quote=True
+            )
+        except Exception:
+            return
 
 
 async def contrast(client, message):
@@ -196,7 +192,6 @@ async def contrast(client, message):
         if not os.path.isdir(f"./DOWNLOADS/{userid}"):
             os.makedirs(f"./DOWNLOADS/{userid}")
         download_location = "./DOWNLOADS" + "/" + userid + "/" + userid + ".jpg"
-        edit_img_loc = "./DOWNLOADS" + "/" + userid + "/" + "contrast.jpg"
         if not message.reply_to_message.empty:
             msg = await message.reply_to_message.reply_text(
                 "Downloading image", quote=True
@@ -207,6 +202,7 @@ async def contrast(client, message):
             await msg.edit("Processing Image...")
             image = Image.open(a)
             contrast = ImageEnhance.Contrast(image)
+            edit_img_loc = "./DOWNLOADS" + "/" + userid + "/" + "contrast.jpg"
             contrast.enhance(1.5).save(edit_img_loc)
             await message.reply_chat_action("upload_photo")
             await message.reply_to_message.reply_photo(edit_img_loc, quote=True)
@@ -221,13 +217,12 @@ async def contrast(client, message):
         print("contrast-error - " + str(e))
         if "USER_IS_BLOCKED" in str(e):
             return
-        else:
-            try:
-                await message.reply_to_message.reply_text(
-                    "Something went wrong!", quote=True
-                )
-            except Exception:
-                return
+        try:
+            await message.reply_to_message.reply_text(
+                "Something went wrong!", quote=True
+            )
+        except Exception:
+            return
 
 
 def sepia(img):
@@ -238,15 +233,11 @@ def sepia(img):
             red, green, blue = img.getpixel((x, y))
             new_val = 0.3 * red + 0.59 * green + 0.11 * blue
             new_red = int(new_val * 2)
-            if new_red > 255:
-                new_red = 255
+            new_red = min(new_red, 255)
             new_green = int(new_val * 1.5)
-            if new_green > 255:
-                new_green = 255
+            new_green = min(new_green, 255)
             new_blue = int(new_val)
-            if new_blue > 255:
-                new_blue = 255
-
+            new_blue = min(new_blue, 255)
             new_img.putpixel((x, y), (new_red, new_green, new_blue))
 
     return new_img
@@ -258,7 +249,6 @@ async def sepia_mode(client, message):
         if not os.path.isdir(f"./DOWNLOADS/{userid}"):
             os.makedirs(f"./DOWNLOADS/{userid}")
         download_location = "./DOWNLOADS" + "/" + userid + "/" + userid + ".jpg"
-        edit_img_loc = "./DOWNLOADS" + "/" + userid + "/" + "sepia.jpg"
         if not message.reply_to_message.empty:
             msg = await message.reply_to_message.reply_text(
                 "Downloading image", quote=True
@@ -269,6 +259,7 @@ async def sepia_mode(client, message):
             await msg.edit("Processing Image...")
             image = Image.open(a)
             new_img = sepia(image)
+            edit_img_loc = "./DOWNLOADS" + "/" + userid + "/" + "sepia.jpg"
             new_img.save(edit_img_loc)
             await message.reply_chat_action("upload_photo")
             await message.reply_to_message.reply_photo(edit_img_loc, quote=True)
@@ -283,13 +274,12 @@ async def sepia_mode(client, message):
         print("sepia_mode-error - " + str(e))
         if "USER_IS_BLOCKED" in str(e):
             return
-        else:
-            try:
-                await message.reply_to_message.reply_text(
-                    "Something went wrong!", quote=True
-                )
-            except Exception:
-                return
+        try:
+            await message.reply_to_message.reply_text(
+                "Something went wrong!", quote=True
+            )
+        except Exception:
+            return
 
 
 def dodgeV2(x, y):
@@ -330,13 +320,12 @@ async def pencil(client, message):
         print("pencil-error - " + str(e))
         if "USER_IS_BLOCKED" in str(e):
             return
-        else:
-            try:
-                await message.reply_to_message.reply_text(
-                    "Something went wrong!", quote=True
-                )
-            except Exception:
-                return
+        try:
+            await message.reply_to_message.reply_text(
+                "Something went wrong!", quote=True
+            )
+        except Exception:
+            return
 
 
 def color_quantization(img, k):
@@ -390,10 +379,9 @@ async def cartoon(client, message):
         print("cartoon-error - " + str(e))
         if "USER_IS_BLOCKED" in str(e):
             return
-        else:
-            try:
-                await message.reply_to_message.reply_text(
-                    "Something went wrong!", quote=True
-                )
-            except Exception:
-                return
+        try:
+            await message.reply_to_message.reply_text(
+                "Something went wrong!", quote=True
+            )
+        except Exception:
+            return

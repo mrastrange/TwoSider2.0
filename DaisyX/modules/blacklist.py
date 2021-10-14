@@ -59,11 +59,8 @@ async def _(event):
         return
     if event.is_private:
         return
-    if event.is_group:
-        if await can_change_info(message=event):
-            pass
-        else:
-            return
+    if event.is_group and not await can_change_info(message=event):
+        return
     chat = event.chat
     urls = event.text.split(None, 1)
     if len(urls) > 1:
@@ -107,11 +104,8 @@ async def _(event):
         return
     if event.is_private:
         return
-    if event.is_group:
-        if await can_change_info(message=event):
-            pass
-        else:
-            return
+    if event.is_group and not await can_change_info(message=event):
+        return
     chat = event.chat
     urls = event.text.split(None, 1)
 
@@ -186,11 +180,8 @@ async def _(event):
         return
     if event.is_private:
         return
-    if event.is_group:
-        if await can_change_info(message=event):
-            pass
-        else:
-            return
+    if event.is_group and not await can_change_info(message=event):
+        return
     chat = event.chat
     base_string = "Current <b>blacklisted</b> domains:\n"
     blacklisted = urlsql.get_blacklisted_urls(chat.id)

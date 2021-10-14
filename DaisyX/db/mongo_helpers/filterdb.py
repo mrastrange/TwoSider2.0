@@ -32,10 +32,7 @@ filtersdb = db.filters
 
 async def _get_filters(chat_id: int) -> Dict[str, int]:
     _filters = await filtersdb.find_one({"chat_id": chat_id})
-    if _filters:
-        _filters = _filters["filters"]
-    else:
-        _filters = {}
+    _filters = _filters["filters"] if _filters else {}
     return _filters
 
 

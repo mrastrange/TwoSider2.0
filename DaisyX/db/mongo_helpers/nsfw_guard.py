@@ -5,9 +5,7 @@ nsfwdb = db.nsfw
 
 async def is_nsfw_on(chat_id: int) -> bool:
     chat = await nsfwdb.find_one({"chat_id": chat_id})
-    if not chat:
-        return False
-    return True
+    return bool(chat)
 
 
 async def nsfw_on(chat_id: int):
